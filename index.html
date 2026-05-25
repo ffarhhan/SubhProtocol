@@ -1,0 +1,3099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The Subh Protocol — A root-cause health and performance system combining functional nutrition, biohacking, and martial arts-informed training for busy professionals." />
+<title>The Subh Protocol — Root-Cause Health & Performance Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@1,400;1,500&family=Montserrat:wght@500;700;800&family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+<style>
+  /* ---------- RESET & BASE ---------- */
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+  body{
+    font-family:'DM Sans',sans-serif;
+    background:#0A0A0A;
+    color:#F5F0E8;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  ul{list-style:none;}
+
+  /* ---------- TYPOGRAPHY ---------- */
+  .eyebrow{
+    display:inline-block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:#D4A647;
+    margin-bottom:14px;
+    position:relative;
+    padding-bottom:10px;
+  }
+  .eyebrow::after{
+    content:"";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    height:1px;
+    background:#D4A647;
+    transition:width 0.8s cubic-bezier(0.23,1,0.32,1);
+  }
+  .eyebrow.in-view::after{width:60px;}
+  .display{
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:0.01em;
+    line-height:0.95;
+    color:#F5F0E8;
+    font-weight:400;
+  }
+  .section-title{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    line-height:1.1;
+    color:#F5F0E8;
+    letter-spacing:-0.01em;
+  }
+  .muted{color:rgba(245,240,232,0.55);}
+  .mono{font-family:'JetBrains Mono',monospace;}
+  .italic-editorial{font-family:'Lora',serif;font-style:italic;}
+
+  /* ---------- LAYOUT ---------- */
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+    width:100%;
+  }
+  section{
+    padding:110px 0;
+    position:relative;
+  }
+  section.alt{background:#080808;}
+
+  /* ---------- AMBER PROGRESS LINE ---------- */
+  .scroll-progress{
+    position:fixed;
+    left:0;
+    top:0;
+    width:2px;
+    height:0%;
+    background:linear-gradient(180deg,#D4A647,transparent);
+    z-index:1000;
+    pointer-events:none;
+    transition:height 0.1s linear;
+  }
+
+  /* ---------- NAVIGATION ---------- */
+  .nav{
+    position:fixed;
+    top:16px;
+    left:50%;
+    transform:translateX(-50%);
+    z-index:900;
+    display:flex;
+    align-items:center;
+    gap:4px;
+    padding:7px 8px 7px 18px;
+    border-radius:48px;
+    background:rgba(255,255,255,0.07);
+    -webkit-backdrop-filter:blur(24px);
+    backdrop-filter:blur(24px);
+    border:1px solid rgba(255,255,255,0.10);
+    box-shadow:0 1px 0 rgba(255,255,255,0.2) inset,0 20px 60px -20px rgba(0,0,0,0.6);
+    transition:all 0.4s ease;
+    white-space:nowrap;
+  }
+  .nav.scrolled{
+    background:rgba(10,10,10,0.88);
+    padding:5px 6px 5px 14px;
+  }
+  .nav-brand{
+    display:flex;
+    align-items:baseline;
+    gap:5px;
+    margin-right:8px;
+    font-family:'Montserrat',sans-serif;
+    font-weight:600;
+    font-size:10px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.6);
+    flex-shrink:0;
+    line-height:1;
+  }
+  .nav-brand-subh{
+    font-family:'Dancing Script',cursive;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.02em;
+    text-transform:none;
+    color:#D4A647;
+    text-shadow:0 0 18px rgba(212,166,71,0.55),0 0 36px rgba(212,166,71,0.2);
+    line-height:1;
+    display:inline-block;
+  }
+  .nav-links{
+    display:flex;
+    gap:2px;
+    align-items:center;
+  }
+  .nav-links a{
+    font-family:'Montserrat',sans-serif;
+    font-weight:500;
+    font-size:10px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.65);
+    padding:6px 10px;
+    border-radius:30px;
+    transition:all 0.3s ease;
+  }
+  .nav-links a:hover{color:#F5F0E8;background:rgba(255,255,255,0.06);}
+  .nav-cta{
+    background:#D4A647;
+    color:#0A0A0A !important;
+    font-weight:700 !important;
+    padding:8px 16px !important;
+    font-size:10px !important;
+    border-radius:30px;
+  }
+  .nav-cta:hover{background:#E5B658;}
+  .nav-toggle{display:none;}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    padding:16px 36px;
+    border-radius:40px;
+    cursor:pointer;
+    transition:all 0.4s cubic-bezier(0.23,1,0.32,1);
+    text-align:center;
+    line-height:1;
+  }
+  .btn-primary{
+    background:#D4A647;
+    color:#0A0A0A;
+    border:1.5px solid #D4A647;
+    box-shadow:0 0 0 rgba(212,166,71,0.35);
+    animation:pulseGlow 2.5s ease-in-out infinite;
+  }
+  .btn-primary:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 40px rgba(212,166,71,0.55);
+    background:#E5B658;
+  }
+  .btn-ghost{
+    background:transparent;
+    border:1.5px solid rgba(212,166,71,0.4);
+    color:#F5F0E8;
+  }
+  .btn-ghost:hover{
+    background:#D4A647;
+    color:#0A0A0A;
+    border-color:#D4A647;
+    transform:translateY(-2px);
+  }
+  .btn-large{padding:20px 44px;font-size:14px;}
+  @keyframes pulseGlow{
+    0%,100%{box-shadow:0 0 0 rgba(212,166,71,0.35);}
+    50%{box-shadow:0 0 30px rgba(212,166,71,0.5);}
+  }
+
+  /* ---------- GLASS CARD ---------- */
+  .glass-card{
+    background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.10);
+    border-radius:16px;
+    padding:40px;
+    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+    transform-style:preserve-3d;
+    will-change:transform;
+  }
+  .glass-card:hover{
+    border-color:rgba(212,166,71,0.35);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 0 80px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse at 30% 50%,rgba(212,166,71,0.12) 0%,transparent 65%);
+    pointer-events:none;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse at 90% 90%,rgba(212,166,71,0.15) 0%,transparent 55%);
+    pointer-events:none;
+    z-index:1;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr 0.7fr;
+    gap:80px;
+    align-items:center;
+    position:relative;
+    z-index:2;
+  }
+  .hero-headline{
+    font-size:clamp(3.2rem,8vw,7rem);
+    margin:18px 0 28px;
+  }
+  .hero-headline .word{
+    display:inline-block;
+    overflow:hidden;
+    padding:0 0.05em;
+  }
+  .hero-headline .word span{
+    display:inline-block;
+    transform:translateY(110%);
+    opacity:0;
+    transition:transform 0.8s cubic-bezier(0.23,1,0.32,1),opacity 0.8s ease;
+  }
+  .hero-headline.animated .word span{
+    transform:translateY(0);
+    opacity:1;
+  }
+  .hero-sub{
+    font-size:clamp(1.05rem,1.4vw,1.25rem);
+    color:rgba(245,240,232,0.65);
+    max-width:560px;
+    margin-bottom:40px;
+    line-height:1.55;
+  }
+  .hero-cta-row{
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    align-items:flex-start;
+  }
+  .micro{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.45);
+    letter-spacing:0.05em;
+  }
+  .hero-scarcity{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(212,166,71,0.8);
+    letter-spacing:0.05em;
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    line-height:1.5;
+  }
+  .hero-visual{
+    position:relative;
+    height:520px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  /* ---------- ORBIT SYSTEM ---------- */
+  .orbit-system{
+    position:relative;
+    width:420px;
+    height:420px;
+    flex-shrink:0;
+  }
+  .orbit-glow{
+    position:absolute;
+    inset:-30px;
+    border-radius:50%;
+    background:radial-gradient(circle at 50% 50%,rgba(212,166,71,0.25) 0%,rgba(212,166,71,0.06) 45%,transparent 70%);
+    filter:blur(24px);
+    animation:orbFloat 8s ease-in-out infinite;
+    pointer-events:none;
+  }
+  .orbit-ring-svg{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    animation:ringRotate 40s linear infinite;
+  }
+  .orbit-ring-svg-rev{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    animation:ringRotate 25s linear infinite reverse;
+  }
+  .orbit-label-wrap{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+  }
+  .orbit-label{
+    position:absolute;
+    transform:translate(-50%,-50%);
+    pointer-events:auto;
+  }
+  .orbit-label span{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:9px;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.72);
+    background:rgba(10,10,10,0.80);
+    border:1px solid rgba(255,255,255,0.10);
+    padding:5px 9px;
+    border-radius:20px;
+    -webkit-backdrop-filter:blur(10px);
+    backdrop-filter:blur(10px);
+    white-space:nowrap;
+    transition:all 0.3s ease;
+  }
+  .orbit-label span::before{
+    content:"";
+    display:inline-block;
+    width:5px;
+    height:5px;
+    border-radius:50%;
+    background:#D4A647;
+    flex-shrink:0;
+    box-shadow:0 0 6px rgba(212,166,71,0.7);
+  }
+  .orbit-label:hover span{
+    color:#D4A647;
+    border-color:rgba(212,166,71,0.35);
+    background:rgba(10,10,10,0.92);
+  }
+  .orbit-center{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    z-index:5;
+    pointer-events:none;
+  }
+  .orbit-center-num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:80px;
+    color:#D4A647;
+    line-height:0.9;
+    letter-spacing:0.02em;
+    display:block;
+    text-shadow:0 0 30px rgba(212,166,71,0.45),0 0 60px rgba(212,166,71,0.15);
+  }
+  .orbit-center-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.45);
+    display:block;
+    margin-top:8px;
+  }
+  @keyframes ringRotate{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  @keyframes orbFloat{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(12px,-16px) scale(1.06);}
+  }
+
+  /* ---------- CREDIBILITY ---------- */
+  .cred-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:80px;
+    align-items:start;
+  }
+  .cred-name{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4rem,9vw,8rem);
+    line-height:0.9;
+    color:#F5F0E8;
+    letter-spacing:0.01em;
+  }
+  .cred-name-sub{
+    font-family:'JetBrains Mono',monospace;
+    color:#D4A647;
+    font-size:12px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    margin-top:18px;
+    display:block;
+  }
+  .cred-headline{
+    font-size:clamp(1.8rem,3vw,2.4rem);
+    margin-bottom:24px;
+  }
+  .cred-bio{
+    font-size:1.05rem;
+    color:rgba(245,240,232,0.75);
+    line-height:1.7;
+    margin-bottom:36px;
+  }
+  .cred-contrast{
+    font-size:0.95rem;
+    color:rgba(245,240,232,0.65);
+    line-height:1.7;
+    margin-bottom:28px;
+    border-left:2px solid rgba(212,166,71,0.4);
+    padding-left:18px;
+  }
+  .badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:24px;
+  }
+  .badge{
+    display:inline-block;
+    padding:9px 16px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.1);
+    border-radius:30px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.8);
+    letter-spacing:0.04em;
+    backdrop-filter:blur(10px);
+    transition:all 0.3s ease;
+  }
+  .badge:hover{border-color:rgba(212,166,71,0.5);color:#D4A647;}
+  .cred-footer{
+    font-family:'DM Sans',sans-serif;
+    font-size:0.92rem;
+    color:rgba(245,240,232,0.55);
+    line-height:1.6;
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding-top:20px;
+    margin-top:20px;
+  }
+  .cred-upcoming{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10.5px;
+    color:rgba(212,166,71,0.65);
+    line-height:1.65;
+    border-top:1px solid rgba(212,166,71,0.15);
+    padding-top:16px;
+    margin-top:16px;
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- PROBLEM ---------- */
+  .problem{text-align:center;}
+  .problem-inner{max-width:820px;margin:0 auto;}
+  .problem-opener{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:clamp(2rem,4vw,3.2rem);
+    line-height:1.25;
+    color:#F5F0E8;
+    margin-bottom:50px;
+    letter-spacing:-0.01em;
+  }
+  .problem-para{
+    font-size:1.15rem;
+    color:rgba(245,240,232,0.7);
+    line-height:1.75;
+    margin-bottom:30px;
+  }
+  .problem-pivot{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:clamp(1.2rem,1.8vw,1.5rem);
+    color:#F5F0E8;
+    margin-top:40px;
+    padding-top:40px;
+    border-top:1px solid rgba(212,166,71,0.25);
+    line-height:1.5;
+  }
+
+  /* ---------- DIFFERENCE / COMPARISON ---------- */
+  .diff-intro{
+    max-width:820px;
+    margin:0 auto 60px;
+    text-align:center;
+  }
+  .diff-headline{
+    font-size:clamp(2rem,3.6vw,3rem);
+    margin-bottom:24px;
+  }
+  .diff-sub{
+    font-size:1.05rem;
+    color:rgba(245,240,232,0.65);
+    line-height:1.7;
+  }
+  .compare-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr 1.05fr;
+    gap:24px;
+    align-items:stretch;
+    margin-bottom:50px;
+  }
+  .compare-card{
+    position:relative;
+    padding:40px 32px;
+    border-radius:18px;
+    background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.015) 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+  }
+  .compare-card.muted-card{opacity:0.78;filter:saturate(0.85);}
+  .compare-card.featured{
+    border:1px solid rgba(212,166,71,0.4);
+    box-shadow:0 0 40px rgba(212,166,71,0.2),0 0 0 1px rgba(212,166,71,0.4);
+    transform:scale(1.03);
+    background:linear-gradient(135deg,rgba(212,166,71,0.06) 0%,rgba(255,255,255,0.02) 100%);
+  }
+  .compare-card.featured::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:60%;
+    background:radial-gradient(ellipse at 50% 0%,rgba(212,166,71,0.18) 0%,transparent 70%);
+    border-radius:18px 18px 0 0;
+    pointer-events:none;
+  }
+  .compare-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.5);
+    margin-bottom:12px;
+    position:relative;
+    z-index:2;
+  }
+  .compare-card.featured .compare-label{color:#D4A647;}
+  .compare-title{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:1.4rem;
+    margin-bottom:24px;
+    color:#F5F0E8;
+    position:relative;
+    z-index:2;
+  }
+  .compare-list{
+    font-size:0.98rem;
+    color:rgba(245,240,232,0.7);
+    line-height:1.7;
+    position:relative;
+    z-index:2;
+  }
+  .compare-list ul{margin-top:10px;}
+  .compare-list li{
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    position:relative;
+    padding-left:18px;
+  }
+  .compare-list li::before{
+    content:"·";
+    position:absolute;
+    left:0;
+    color:rgba(245,240,232,0.4);
+    font-size:1.3em;
+    line-height:1;
+    top:8px;
+  }
+  .compare-card.featured .compare-list li::before{color:#D4A647;}
+  .compare-list li:last-child{border-bottom:none;}
+  .diff-closing{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:clamp(1.1rem,1.6vw,1.4rem);
+    text-align:center;
+    color:#F5F0E8;
+    max-width:820px;
+    margin:50px auto 0;
+    padding:30px;
+    border-left:3px solid #D4A647;
+    line-height:1.5;
+    text-align:left;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-intro{text-align:center;margin-bottom:60px;}
+  .services-headline{
+    font-size:clamp(2.2rem,3.8vw,3.2rem);
+  }
+  .services-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    align-items:start;
+  }
+  .service-card{
+    position:relative;
+    padding:48px 40px;
+    border-radius:20px;
+    background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%);
+    backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.10);
+    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+    display:flex;
+    flex-direction:column;
+    transform-style:preserve-3d;
+  }
+  .service-card.featured{
+    border:1px solid rgba(212,166,71,0.4);
+    box-shadow:0 40px 80px -20px rgba(212,166,71,0.15),0 1px 0 rgba(212,166,71,0.3) inset,0 30px 60px -20px rgba(0,0,0,0.6);
+  }
+  .service-card.featured::before{
+    content:"";
+    position:absolute;
+    top:0;left:20%;right:20%;
+    height:1px;
+    background:linear-gradient(90deg,transparent,#D4A647,transparent);
+  }
+  .service-card.mid-card{
+    border-color:rgba(212,166,71,0.15);
+    background:linear-gradient(135deg,rgba(212,166,71,0.04) 0%,rgba(22,22,22,0) 60%);
+  }
+  .service-card.mid-card:hover{
+    border-color:rgba(212,166,71,0.28);
+  }
+  .btn-mid{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:16px 36px;
+    border-radius:40px;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    text-decoration:none;
+    cursor:pointer;
+    transition:all 0.35s cubic-bezier(0.23,1,0.32,1);
+    background:rgba(212,166,71,0.12);
+    border:1.5px solid rgba(212,166,71,0.45);
+    color:#D4A647;
+    width:100%;
+    margin-top:auto;
+  }
+  .btn-mid:hover{
+    background:rgba(212,166,71,0.2);
+    box-shadow:0 0 28px rgba(212,166,71,0.2);
+    transform:translateY(-2px);
+  }
+  .service-badge{
+    display:inline-block;
+    padding:7px 14px;
+    background:rgba(212,166,71,0.12);
+    border:1px solid rgba(212,166,71,0.3);
+    border-radius:30px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#D4A647;
+    backdrop-filter:blur(10px);
+    margin-bottom:22px;
+    align-self:flex-start;
+  }
+  .service-title{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2.2rem,3.5vw,3rem);
+    color:#F5F0E8;
+    margin-bottom:14px;
+    letter-spacing:0.01em;
+  }
+  .service-tagline{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:rgba(245,240,232,0.7);
+    line-height:1.5;
+    margin-bottom:30px;
+  }
+  .service-divider{
+    height:1px;
+    background:rgba(255,255,255,0.08);
+    margin:24px 0;
+  }
+  .process-list{
+    counter-reset:step;
+    padding:0;
+    margin-bottom:24px;
+  }
+  .process-list li{
+    counter-increment:step;
+    position:relative;
+    padding:10px 0 10px 38px;
+    font-size:0.93rem;
+    color:rgba(245,240,232,0.75);
+    line-height:1.55;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+  }
+  .process-list li:last-child{border-bottom:none;}
+  .process-list li::before{
+    content:counter(step,decimal-leading-zero);
+    position:absolute;
+    left:0;
+    top:10px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:#D4A647;
+    font-weight:500;
+  }
+  .highlight-box{
+    background:rgba(212,166,71,0.08);
+    border-left:3px solid #D4A647;
+    padding:18px 22px;
+    border-radius:0 12px 12px 0;
+    margin:24px 0;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:0.98rem;
+    color:#F5F0E8;
+    line-height:1.5;
+  }
+  .service-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.55);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-bottom:10px;
+  }
+  .service-meta strong{color:#D4A647;font-weight:500;}
+  .service-includes{
+    font-size:0.93rem;
+    color:rgba(245,240,232,0.7);
+    line-height:1.7;
+    margin-bottom:30px;
+  }
+  .service-card-top{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:16px;
+    gap:10px;
+  }
+  .service-duration-badge{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.5);
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:20px;
+    padding:5px 12px;
+    white-space:nowrap;
+  }
+  .featured-dur{
+    color:rgba(212,166,71,0.8);
+    border-color:rgba(212,166,71,0.2);
+    background:rgba(212,166,71,0.05);
+  }
+  .service-highlight-stat{
+    font-family:'DM Sans',sans-serif;
+    font-size:0.9rem;
+    color:rgba(245,240,232,0.65);
+    line-height:1.6;
+    background:rgba(212,166,71,0.06);
+    border-left:2px solid #D4A647;
+    padding:12px 16px;
+    border-radius:0 8px 8px 0;
+    margin:16px 0;
+  }
+  .service-highlight-stat strong{
+    color:#D4A647;
+  }
+  .service-features{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:28px;
+    flex:1;
+  }
+  .service-feature{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    font-family:'DM Sans',sans-serif;
+    font-size:0.88rem;
+    color:rgba(245,240,232,0.72);
+    line-height:1.5;
+  }
+  .sf-check{
+    color:#D4A647;
+    font-size:12px;
+    flex-shrink:0;
+    margin-top:2px;
+    font-weight:700;
+  }
+  .sf-check.amber-plus{
+    color:#F5C842;
+    font-size:14px;
+  }
+  .training-day{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:11px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    font-size:0.93rem;
+  }
+  .training-day:last-child{border-bottom:none;}
+  .day-tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:#D4A647;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    min-width:50px;
+    font-weight:500;
+  }
+  .day-content{
+    color:rgba(245,240,232,0.8);
+    flex:1;
+    line-height:1.4;
+  }
+  .day-duration{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    color:rgba(245,240,232,0.45);
+    white-space:nowrap;
+  }
+  .service-card .btn{margin-top:auto;align-self:stretch;}
+  .services-note{
+    text-align:center;
+    margin-top:40px;
+    font-family:'Lora',serif;
+    font-style:italic;
+    color:rgba(245,240,232,0.6);
+    font-size:1rem;
+    max-width:680px;
+    margin-left:auto;
+    margin-right:auto;
+    line-height:1.7;
+  }
+  .services-orient{
+    text-align:center;
+    max-width:700px;
+    margin:12px auto 0;
+    font-family:'DM Sans',sans-serif;
+    font-size:1rem;
+    color:rgba(245,240,232,0.55);
+    line-height:1.7;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials-intro{text-align:center;margin-bottom:60px;}
+  .testimonial-frame{
+    text-align:center;
+    max-width:620px;
+    margin:0 auto 48px;
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:1.05rem;
+    color:rgba(245,240,232,0.6);
+    line-height:1.7;
+  }
+  .testimonial-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-bottom:60px;
+  }
+  .testimonial-card{
+    position:relative;
+    background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.015) 100%);
+    backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.08);
+    border-left:3px solid #D4A647;
+    border-radius:0 16px 16px 0;
+    padding:36px 36px 36px 40px;
+    overflow:hidden;
+    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+  }
+  .testimonial-card::before{
+    content:"";
+    position:absolute;
+    top:-20px;
+    right:10px;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:180px;
+    color:rgba(212,166,71,0.08);
+    line-height:1;
+    pointer-events:none;
+  }
+  .testimonial-card::before{content:"\201C";}
+  .testimonial-quote{
+    font-size:1.05rem;
+    color:rgba(245,240,232,0.85);
+    line-height:1.65;
+    margin-bottom:24px;
+    position:relative;
+    z-index:2;
+    font-family:'Lora',serif;
+    font-style:italic;
+  }
+  .testimonial-meta{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding-top:20px;
+    position:relative;
+    z-index:2;
+  }
+  .testimonial-name{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:#F5F0E8;
+    letter-spacing:0.04em;
+  }
+  .testimonial-role{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.5);
+    letter-spacing:0.04em;
+  }
+  .stats-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    overflow:hidden;
+    backdrop-filter:blur(20px);
+  }
+  .stat-cell{
+    padding:32px 24px;
+    text-align:center;
+    border-right:1px solid rgba(255,255,255,0.06);
+  }
+  .stat-cell:last-child{border-right:none;}
+  .stat-number{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2.6rem,4.5vw,3.6rem);
+    color:#D4A647;
+    line-height:1;
+    margin-bottom:10px;
+  }
+  .stat-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.6);
+    letter-spacing:0.05em;
+    line-height:1.5;
+  }
+
+  /* ---------- FILTER ---------- */
+  .filter-intro{text-align:center;margin-bottom:60px;}
+  .filter-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+    margin-bottom:50px;
+  }
+  .filter-card{
+    background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:40px;
+    backdrop-filter:blur(20px);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+  }
+  .filter-card h3{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:1.5rem;
+    margin-bottom:30px;
+    letter-spacing:-0.01em;
+  }
+  .filter-card.fit h3{color:#D4A647;}
+  .filter-card.notfit h3{color:rgba(192,57,43,0.7);}
+  .filter-item{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    padding:14px 0;
+    border-bottom:1px solid rgba(255,255,255,0.04);
+    font-size:0.98rem;
+    color:rgba(245,240,232,0.78);
+    line-height:1.5;
+  }
+  .filter-item:last-child{border-bottom:none;}
+  .filter-icon{
+    flex-shrink:0;
+    width:18px;
+    height:18px;
+    margin-top:3px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    font-weight:700;
+  }
+  .filter-card.fit .filter-icon{
+    background:rgba(212,166,71,0.15);
+    border:1px solid rgba(212,166,71,0.4);
+    color:#D4A647;
+  }
+  .filter-card.notfit .filter-icon{
+    background:rgba(192,57,43,0.1);
+    border:1px solid rgba(192,57,43,0.35);
+    color:rgba(192,57,43,0.85);
+  }
+  .filter-closing{
+    text-align:center;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:clamp(1.1rem,1.8vw,1.4rem);
+    color:#D4A647;
+    max-width:720px;
+    margin:0 auto;
+    line-height:1.5;
+    padding:30px 0;
+  }
+
+  /* ---------- PROCESS / NEXT STEPS ---------- */
+  .process-intro{text-align:center;margin-bottom:60px;}
+  .next-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:18px;
+  }
+  .next-card{
+    background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.02) 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    padding:30px 24px;
+    backdrop-filter:blur(20px);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+    position:relative;
+    transform-style:preserve-3d;
+  }
+  .next-step-num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:3.2rem;
+    color:#D4A647;
+    line-height:0.9;
+    margin-bottom:18px;
+    display:block;
+  }
+  .next-step-title{
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    color:#F5F0E8;
+    margin-bottom:12px;
+    line-height:1.3;
+    letter-spacing:-0.005em;
+  }
+  .next-step-desc{
+    font-size:0.88rem;
+    color:rgba(245,240,232,0.65);
+    line-height:1.55;
+  }
+
+  /* ---------- FAQ ---------- */
+  .faq-intro{text-align:center;margin-bottom:60px;}
+  .faq-list{
+    max-width:880px;
+    margin:0 auto;
+  }
+  .faq-item{
+    background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:14px;
+    margin-bottom:14px;
+    overflow:hidden;
+    backdrop-filter:blur(15px);
+    transition:all 0.4s ease;
+  }
+  .faq-item.open{border-color:rgba(212,166,71,0.35);}
+  .faq-question{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:24px 30px;
+    cursor:pointer;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:1.05rem;
+    color:#F5F0E8;
+    text-align:left;
+    width:100%;
+    transition:color 0.3s ease;
+  }
+  .faq-question:hover{color:#D4A647;}
+  .faq-icon{
+    flex-shrink:0;
+    width:22px;
+    height:22px;
+    position:relative;
+    transition:transform 0.4s ease;
+  }
+  .faq-icon::before,.faq-icon::after{
+    content:"";
+    position:absolute;
+    background:#D4A647;
+    border-radius:1px;
+  }
+  .faq-icon::before{
+    top:50%;
+    left:0;
+    width:100%;
+    height:2px;
+    transform:translateY(-50%);
+  }
+  .faq-icon::after{
+    left:50%;
+    top:0;
+    height:100%;
+    width:2px;
+    transform:translateX(-50%);
+    transition:transform 0.4s ease;
+  }
+  .faq-item.open .faq-icon::after{transform:translateX(-50%) scaleY(0);}
+  .faq-answer{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.5s cubic-bezier(0.23,1,0.32,1);
+  }
+  .faq-answer-inner{
+    padding:0 30px 26px;
+    color:rgba(245,240,232,0.72);
+    font-size:0.98rem;
+    line-height:1.7;
+  }
+  .faq-week-list{
+    list-style:none;
+    margin-top:16px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    padding:0;
+  }
+  .faq-week-list li{
+    font-family:'DM Sans',sans-serif;
+    font-size:0.92rem;
+    color:rgba(245,240,232,0.72);
+    line-height:1.6;
+    padding-left:14px;
+    border-left:2px solid rgba(212,166,71,0.3);
+  }
+  .faq-week-list li strong{
+    color:#D4A647;
+    font-weight:700;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:center;
+    padding:140px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse at 50% 0%,rgba(212,166,71,0.10) 0%,transparent 60%);
+    pointer-events:none;
+  }
+  .final-cta-inner{
+    position:relative;
+    z-index:2;
+    max-width:820px;
+    margin:0 auto;
+  }
+  .final-headline{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3.5rem,8vw,7rem);
+    line-height:0.95;
+    color:#F5F0E8;
+    margin-bottom:30px;
+    letter-spacing:0.01em;
+  }
+  .final-sub{
+    font-size:clamp(1.1rem,1.5vw,1.3rem);
+    color:rgba(245,240,232,0.7);
+    line-height:1.6;
+    max-width:680px;
+    margin:0 auto 50px;
+  }
+  .whatsapp-area{
+    margin:50px auto 30px;
+    max-width:480px;
+    padding:30px;
+    background:linear-gradient(135deg,rgba(255,255,255,0.04) 0%,rgba(255,255,255,0.01) 100%);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:16px;
+    backdrop-filter:blur(15px);
+  }
+  .whatsapp-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#D4A647;
+    margin-bottom:14px;
+  }
+  .whatsapp-placeholder{
+    font-family:'DM Sans',sans-serif;
+    font-size:0.95rem;
+    color:rgba(245,240,232,0.65);
+    line-height:1.5;
+  }
+  .final-instagram{
+    margin-top:30px;
+    font-family:'Montserrat',sans-serif;
+    font-size:0.95rem;
+    color:#D4A647;
+    letter-spacing:0.05em;
+  }
+  .final-instagram a{
+    border-bottom:1px solid rgba(212,166,71,0.4);
+    padding-bottom:2px;
+    transition:all 0.3s ease;
+  }
+  .final-instagram a:hover{color:#F5F0E8;border-color:#F5F0E8;}
+  .cta-scarcity{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(212,166,71,0.7);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-top:16px;
+  }
+  .contact-options{
+    margin-top:40px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+  }
+  .contact-options-label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.4);
+    margin-bottom:18px;
+  }
+  .contact-btns{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .contact-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:13px 24px;
+    border-radius:40px;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    transition:all 0.3s ease;
+    text-decoration:none;
+  }
+  .contact-btn-wa{
+    background:rgba(37,211,102,0.12);
+    border:1px solid rgba(37,211,102,0.35);
+    color:#25D366;
+  }
+  .contact-btn-wa:hover{
+    background:rgba(37,211,102,0.22);
+    box-shadow:0 0 24px rgba(37,211,102,0.2);
+    transform:translateY(-2px);
+  }
+  .contact-btn-ig{
+    background:rgba(225,48,108,0.10);
+    border:1px solid rgba(225,48,108,0.30);
+    color:#E1306C;
+  }
+  .contact-btn-ig:hover{
+    background:rgba(225,48,108,0.18);
+    box-shadow:0 0 24px rgba(225,48,108,0.18);
+    transform:translateY(-2px);
+  }
+  .final-instagram-follow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.35);
+    letter-spacing:0.12em;
+    margin-top:16px;
+  }
+  .final-instagram-follow a{
+    color:rgba(245,240,232,0.55);
+    transition:color 0.3s ease;
+  }
+  .final-instagram-follow a:hover{color:#D4A647;}
+  @media(max-width:480px){
+    .contact-btns{flex-direction:column;align-items:center;}
+    .contact-btn{width:100%;justify-content:center;}
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:#060606;
+    border-top:1px solid rgba(255,255,255,0.06);
+    padding:40px 0 20px;
+  }
+  .footer-row{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:30px;
+    align-items:center;
+    margin-bottom:30px;
+  }
+  .footer-brand{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:0.2em;
+    color:#F5F0E8;
+  }
+  .footer-nav{
+    display:flex;
+    gap:24px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .footer-nav a{
+    font-family:'Montserrat',sans-serif;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(245,240,232,0.6);
+    transition:color 0.3s ease;
+  }
+  .footer-nav a:hover{color:#D4A647;}
+  .footer-meta{
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.5);
+    text-align:right;
+    line-height:1.6;
+  }
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.05);
+    padding-top:20px;
+    text-align:center;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:rgba(245,240,232,0.35);
+    letter-spacing:0.05em;
+  }
+
+  /* ---------- ANIMATION UTILITIES ---------- */
+  .fade-up{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease,transform 0.7s ease;
+  }
+  .fade-up.in-view{opacity:1;transform:translateY(0);}
+  .fade-up-strong{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity 0.8s ease,transform 0.8s ease;
+  }
+  .fade-up-strong.in-view{opacity:1;transform:translateY(0);}
+  .stagger-char{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(40%);
+    transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.23,1,0.32,1);
+  }
+  .stagger-char.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .marquee{
+    overflow:hidden;
+    padding:18px 0;
+    border-top:1px solid rgba(255,255,255,0.06);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+    background:#0A0A0A;
+    position:relative;
+    z-index:2;
+  }
+  .marquee-track{
+    display:inline-flex;
+    white-space:nowrap;
+    animation:marqueeSlide 45s linear infinite;
+    will-change:transform;
+  }
+  .marquee-content{
+    display:inline-block;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:18px;
+    letter-spacing:0.12em;
+    color:rgba(245,240,232,0.35);
+    padding-right:40px;
+  }
+  @keyframes marqueeSlide{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- MIRROR / A DAY IN YOUR LIFE ---------- */
+  .mirror{padding:0;background:#0A0A0A;}
+  .mirror-wrap{
+    position:relative;
+    height:500vh;
+    background:#0A0A0A;
+  }
+  .mirror-sticky{
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+  }
+  .mirror-header{
+    padding:110px 40px 30px;
+    text-align:center;
+    flex-shrink:0;
+  }
+  .mirror-header .eyebrow{margin-bottom:14px;}
+  .mirror-headline{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:clamp(2rem,3.6vw,3rem);
+    color:#F5F0E8;
+    line-height:1.1;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  .mirror-sub{
+    font-size:1rem;
+    color:rgba(245,240,232,0.6);
+    line-height:1.6;
+    max-width:520px;
+    margin:0 auto;
+  }
+  .mirror-track-wrap{
+    flex:1;
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    padding:30px 0 80px;
+  }
+  .mirror-track{
+    display:flex;
+    gap:30px;
+    padding:0 8vw;
+    will-change:transform;
+  }
+  .mirror-card{
+    min-width:480px;
+    max-width:480px;
+    height:52vh;
+    max-height:480px;
+    padding:46px 38px;
+    border-radius:16px;
+    background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.10);
+    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    position:relative;
+    overflow:hidden;
+  }
+  .mirror-card-time{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(4rem,7vw,6rem);
+    color:#D4A647;
+    line-height:0.9;
+    letter-spacing:0.02em;
+  }
+  .mirror-card-scene{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:clamp(1.4rem,2vw,1.9rem);
+    color:#F5F0E8;
+    line-height:1.35;
+    margin:24px 0;
+  }
+  .mirror-card-footer{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:rgba(245,240,232,0.55);
+    line-height:1.6;
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:20px;
+  }
+  .mirror-progress{
+    position:absolute;
+    bottom:30px;
+    left:8vw;
+    right:8vw;
+    height:2px;
+    background:rgba(255,255,255,0.06);
+    overflow:hidden;
+    border-radius:2px;
+    z-index:5;
+  }
+  .mirror-progress-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,#D4A647,rgba(212,166,71,0.6));
+    transition:width 0.05s linear;
+  }
+  .mirror-closing{
+    text-align:center;
+    padding:60px 40px 110px;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:clamp(1.1rem,1.6vw,1.4rem);
+    color:#D4A647;
+    max-width:820px;
+    margin:0 auto;
+    line-height:1.5;
+    background:#0A0A0A;
+  }
+
+  /* ---------- INACTION BLOCK ---------- */
+  .inaction-block{
+    background:linear-gradient(135deg,rgba(212,166,71,0.06) 0%,rgba(10,10,10,0) 60%);
+    border-top:1px solid rgba(212,166,71,0.15);
+    border-bottom:1px solid rgba(212,166,71,0.15);
+    padding:60px 0;
+  }
+  .inaction-inner{
+    max-width:860px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .inaction-label{
+    display:block;
+    font-family:'JetBrains Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color:#D4A647;
+    margin-bottom:20px;
+  }
+  .inaction-copy{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:clamp(1.05rem,1.8vw,1.25rem);
+    line-height:1.8;
+    color:rgba(245,240,232,0.78);
+  }
+
+  /* ---------- PILLARS ---------- */
+  .pillars-intro{text-align:center;margin-bottom:60px;}
+  .pillars-headline{
+    font-size:clamp(2.2rem,3.6vw,3rem);
+    margin-bottom:20px;
+  }
+  .pillars-sub{
+    font-size:1.05rem;
+    color:rgba(245,240,232,0.65);
+    line-height:1.7;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .pillars-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .pillar-card{
+    position:relative;
+    padding:40px;
+    min-height:360px;
+    border-radius:16px;
+    background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%);
+    -webkit-backdrop-filter:blur(20px) saturate(1.4);
+    backdrop-filter:blur(20px) saturate(1.4);
+    border:1px solid rgba(255,255,255,0.10);
+    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
+    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
+    overflow:hidden;
+    transform-style:preserve-3d;
+    display:flex;
+    flex-direction:column;
+  }
+  .pillar-card:hover{border-color:rgba(212,166,71,0.35);}
+  .pillar-num{
+    position:absolute;
+    bottom:-20px;
+    right:10px;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:160px;
+    color:rgba(212,166,71,0.12);
+    line-height:1;
+    pointer-events:none;
+    letter-spacing:0.02em;
+  }
+  .pillar-title{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:1.35rem;
+    color:#F5F0E8;
+    margin-bottom:18px;
+    letter-spacing:-0.01em;
+    position:relative;
+    z-index:2;
+  }
+  .pillar-body{
+    font-size:0.98rem;
+    color:rgba(245,240,232,0.7);
+    line-height:1.7;
+    margin-bottom:28px;
+    position:relative;
+    z-index:2;
+    flex:1;
+  }
+  .pillar-tags{
+    border-top:1px solid rgba(255,255,255,0.08);
+    padding-top:18px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:11px;
+    color:#D4A647;
+    letter-spacing:0.05em;
+    line-height:1.7;
+    position:relative;
+    z-index:2;
+  }
+
+  /* ---------- VISION BLOCK ---------- */
+  .vision-block{
+    padding:110px 0;
+    background:#080808;
+  }
+  .vision-inner{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:80px;
+    align-items:start;
+  }
+  .vision-headline{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(2rem,3.5vw,3rem);
+    line-height:1.05;
+    letter-spacing:0.02em;
+    color:#F5F0E8;
+    margin-bottom:18px;
+  }
+  .vision-sub{
+    font-size:1rem;
+    color:rgba(245,240,232,0.6);
+    line-height:1.7;
+  }
+  .vision-item{
+    display:flex;
+    gap:18px;
+    align-items:flex-start;
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,0.05);
+  }
+  .vision-item:last-child{border-bottom:none;}
+  .vision-icon{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:22px;
+    color:#D4A647;
+    flex-shrink:0;
+    margin-top:2px;
+    text-shadow:0 0 12px rgba(212,166,71,0.4);
+  }
+  .vision-item strong{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    color:#F5F0E8;
+    margin-bottom:6px;
+    letter-spacing:0.01em;
+  }
+  .vision-item p{
+    font-size:0.9rem;
+    color:rgba(245,240,232,0.6);
+    line-height:1.65;
+    margin:0;
+  }
+
+
+  /* ---------- PERSONAL LETTER ---------- */
+  .letter{
+    background:linear-gradient(180deg,#0A0A0A,#0E0C09,#0A0A0A);
+  }
+  .letter-inner{
+    max-width:780px;
+    margin:0 auto;
+    text-align:left;
+  }
+  .letter-header{
+    text-align:center;
+    margin-bottom:50px;
+  }
+  .letter-headline{
+    font-family:'Lora',serif;
+    font-style:italic;
+    font-size:clamp(2rem,3.5vw,3rem);
+    color:#F5F0E8;
+    line-height:1.2;
+    letter-spacing:-0.01em;
+    font-weight:500;
+  }
+  .letter-para{
+    font-family:'DM Sans',sans-serif;
+    font-size:1.05rem;
+    color:rgba(245,240,232,0.75);
+    line-height:1.8;
+    margin-bottom:26px;
+  }
+  .letter-para .opening{
+    font-family:'Lora',serif;
+    font-style:italic;
+    color:#F5F0E8;
+    font-size:1.15rem;
+  }
+  .letter-para.final{
+    font-family:'Montserrat',sans-serif;
+    font-weight:600;
+    color:#F5F0E8;
+    font-size:1.1rem;
+    line-height:1.6;
+    border-left:3px solid #D4A647;
+    padding:22px 28px;
+    margin-top:36px;
+    margin-bottom:36px;
+    background:rgba(212,166,71,0.04);
+    border-radius:0 12px 12px 0;
+  }
+  .letter-signature{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;
+    color:#D4A647;
+    letter-spacing:0.25em;
+    text-transform:uppercase;
+    margin-top:40px;
+    text-align:right;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:1024px){
+    .hero-grid{grid-template-columns:1fr;gap:60px;}
+    .hero-visual{height:340px;display:flex;justify-content:center;}
+    .orbit-system{width:340px;height:340px;}
+    .vision-inner{grid-template-columns:1fr;gap:48px;}
+    .cred-grid{grid-template-columns:1fr;gap:50px;}
+    .compare-grid{grid-template-columns:1fr;}
+    .compare-card.featured{transform:none;}
+    .next-grid{grid-template-columns:repeat(2,1fr);}
+    .nav-links a:not(.nav-cta){display:none;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:768px){
+    section{padding:64px 0;}
+    .container{padding:0 20px;}
+    .nav{top:14px;padding:8px 10px 8px 16px;}
+    .nav-brand{font-size:11px;}
+    .nav-cta{padding:8px 14px !important;font-size:11px !important;}
+    .hero{padding:110px 0 60px;}
+    .hero-headline{font-size:clamp(2.6rem,11vw,4.5rem);}
+    .services-grid{grid-template-columns:1fr;}
+    .testimonial-grid{grid-template-columns:1fr;}
+    .stats-strip{grid-template-columns:1fr 1fr;}
+    .stat-cell{border-right:none;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .stat-cell:nth-child(2){border-right:none;}
+    .stat-cell:nth-child(odd){border-right:1px solid rgba(255,255,255,0.06);}
+    .stat-cell:nth-last-child(-n+2){border-bottom:none;}
+    .filter-grid{grid-template-columns:1fr;}
+    .next-grid{grid-template-columns:1fr;}
+    .footer-row{grid-template-columns:1fr;text-align:center;gap:20px;}
+    .footer-meta{text-align:center;}
+    .service-card{padding:36px 26px;}
+    .glass-card{padding:30px;}
+    .filter-card{padding:30px;}
+    .diff-closing{padding:20px;font-size:1.05rem;}
+    .training-day{flex-wrap:wrap;}
+    .day-duration{width:100%;padding-left:64px;}
+    /* Mirror — stack vertically on mobile, no sticky horizontal scroll */
+    .mirror-wrap{height:auto;background:#0A0A0A;}
+    .mirror-sticky{position:relative;top:auto;height:auto;overflow:visible;display:block;padding:64px 0 0;}
+    .mirror-header{padding:0 20px 20px;}
+    .mirror-track-wrap{padding:20px 0;overflow:visible;flex:none;}
+    .mirror-track{flex-direction:column;gap:20px;padding:0 20px;transform:none !important;}
+    .mirror-card{min-width:0;max-width:none;height:auto;max-height:none;width:100%;padding:36px 28px;}
+    .mirror-progress{display:none;}
+    .mirror-closing{padding:40px 20px 64px;}
+    .pillars-grid{grid-template-columns:1fr;}
+    .pillar-card{min-height:auto;padding:32px 28px;}
+    .pillar-num{font-size:120px;bottom:-12px;}
+    .orbit-system{width:280px;height:280px;}
+    .orbit-label span{font-size:7.5px;padding:4px 7px;}
+    .orbit-center-num{font-size:48px;}
+    .vision-block{padding:64px 0;}
+    .inaction-block{padding:48px 0;}
+    .marquee-content{font-size:14px;padding-right:30px;}
+    .letter-para.final{padding:18px 22px;}
+  }
+  @media (max-width:480px){
+    .hero-cta-row{align-items:stretch;width:100%;}
+    .btn{width:100%;}
+    .final-headline{font-size:clamp(2.5rem,12vw,4rem);}
+    .orbit-system{display:none;}
+  }
+
+  /* ---------- REDUCED MOTION ---------- */
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:0.001s !important;
+      animation-iteration-count:1 !important;
+      transition-duration:0.001s !important;
+      scroll-behavior:auto !important;
+    }
+    .fade-up,.fade-up-strong,.stagger-char{opacity:1 !important;transform:none !important;}
+    .hero-headline .word span{opacity:1 !important;transform:none !important;}
+    .orbit-ring-svg,.orbit-ring-svg-rev{animation:none !important;}
+    .orbit-glow{animation:none !important;}
+    .btn-primary{animation:none !important;}
+    .marquee-track{animation:none !important;}
+    .mirror-wrap{height:auto !important;}
+    .mirror-sticky{position:relative !important;top:auto !important;height:auto !important;overflow:visible !important;display:block !important;}
+    .mirror-track-wrap{overflow:visible !important;flex:none !important;}
+    .mirror-track{flex-direction:column !important;transform:none !important;gap:20px !important;}
+    .mirror-card{min-width:0 !important;max-width:none !important;height:auto !important;max-height:none !important;width:100% !important;}
+    .mirror-progress-fill{width:100% !important;}
+    .eyebrow::after{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- Scroll progress line -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="mainNav">
+  <div class="nav-brand">
+    The&nbsp;<span class="nav-brand-subh">Subh</span>&nbsp;Protocol
+  </div>
+  <div class="nav-links">
+    <a href="#method">Method</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="nav-cta">Book Now</a>
+  </div>
+</nav>
+
+<!-- SECTION 1 — HERO -->
+<header class="hero" id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="eyebrow fade-up">Nutrition · Biohacking · Martial Arts</span>
+        <h1 class="display hero-headline" id="heroHeadline">FIX THE ROOT. NOT THE SYMPTOM.</h1>
+        <p class="hero-sub fade-up">A root-cause protocol built on your blood work, your nervous system, and every component of your fitness — grounded in peer-reviewed scientific literature, not industry convention or personal opinion.</p>
+        <div class="hero-cta-row fade-up">
+          <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-primary">Book Your Free 15-Min Call</a>
+          <span class="micro">No pitch. No obligation.</span>
+        </div>
+        <p class="hero-scarcity fade-up">⬤ I work with a maximum of 8 clients at a time. When a spot opens, it goes to the next qualified person on the call list.</p>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit-system" id="orbitSystem">
+          <div class="orbit-glow"></div>
+          <svg class="orbit-ring-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="ringGrad1" x1="0" y1="0" x2="420" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#D4A647" stop-opacity="0.5"/>
+                <stop offset="45%" stop-color="#D4A647" stop-opacity="0.04"/>
+                <stop offset="100%" stop-color="#D4A647" stop-opacity="0.5"/>
+              </linearGradient>
+              <linearGradient id="ringGrad2" x1="420" y1="0" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#F5F0E8" stop-opacity="0.10"/>
+                <stop offset="100%" stop-color="#F5F0E8" stop-opacity="0.02"/>
+              </linearGradient>
+            </defs>
+            <circle cx="210" cy="210" r="192" stroke="url(#ringGrad1)" stroke-width="1"/>
+            <circle cx="210" cy="210" r="148" stroke="url(#ringGrad2)" stroke-width="1"/>
+            <circle cx="210" cy="18" r="5" fill="#D4A647" opacity="0.9"/>
+            <circle cx="210" cy="18" r="10" fill="#D4A647" fill-opacity="0.18"/>
+          </svg>
+          <svg class="orbit-ring-svg-rev" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="210" cy="210" r="104" stroke="rgba(212,166,71,0.20)" stroke-width="1" stroke-dasharray="4 10"/>
+            <circle cx="210" cy="106" r="3" fill="rgba(245,240,232,0.35)"/>
+          </svg>
+          <div class="orbit-center">
+            <span class="orbit-center-num">9</span>
+            <span class="orbit-center-label">Fitness Components</span>
+          </div>
+          <div class="orbit-label-wrap" id="orbitLabels"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE STRIP -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-content">ROOT CAUSE&nbsp;·&nbsp;BLOOD WORK&nbsp;·&nbsp;BIOHACKING&nbsp;·&nbsp;MARTIAL ARTS&nbsp;·&nbsp;MOVE BETTER&nbsp;·&nbsp;SCIENCE-BACKED&nbsp;·&nbsp;</span>
+    <span class="marquee-content">ROOT CAUSE&nbsp;·&nbsp;BLOOD WORK&nbsp;·&nbsp;BIOHACKING&nbsp;·&nbsp;MARTIAL ARTS&nbsp;·&nbsp;MOVE BETTER&nbsp;·&nbsp;SCIENCE-BACKED&nbsp;·&nbsp;</span>
+  </div>
+</div>
+
+<!-- SECTION C — PERSONAL LETTER -->
+<section class="letter" id="letter">
+  <div class="container">
+    <div class="letter-inner">
+      <div class="letter-header">
+        <span class="eyebrow fade-up">A Note</span>
+        <h2 class="letter-headline fade-up-strong">Why I Do This Work</h2>
+      </div>
+      <p class="letter-para fade-up"><span class="opening">My mother is the reason I stepped out of mainstream fitness and into nutrition and root-cause health.</span> Watching conventional approaches repeatedly fail someone I loved changed how I see the body — not as a machine to push, but as a system trying to communicate.</p>
+      <p class="letter-para fade-up"><span class="opening">That frustration became obsession.</span> The obsession became years of parallel study and lived practice — nutrition, biohacking, advanced diagnostics, and nearly a decade of full-contact martial arts. It was not any single discipline that revealed the answer. It was the collision of all of them together that taught me what no textbook could in isolation: how the body actually moves, recovers, coordinates, and sustains itself when every system is being addressed simultaneously.</p>
+      <p class="letter-para fade-up"><span class="opening">The professionals I work with are not lazy or undisciplined.</span> They are intelligent, capable people running systems never designed for the demands of their life. They have tried the standard answers. The standard answers did not work.</p>
+      <p class="letter-para final fade-up">If any of this page has felt like someone finally understands your exact situation — that is not an accident. This protocol exists because I needed to build something I could not find anywhere else.</p>
+      <div class="letter-signature fade-up">— Subham</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — CREDIBILITY -->
+<section class="alt" id="about">
+  <div class="container">
+    <div class="cred-grid">
+      <div class="cred-left">
+        <span class="eyebrow fade-up">Who I Am</span>
+        <div class="cred-name fade-up-strong">SUBHAM</div>
+        <span class="cred-name-sub fade-up">Practitioner · Coach · Martial Artist</span>
+      </div>
+      <div class="cred-right">
+        <h2 class="section-title cred-headline fade-up" data-animate="chars">My Work, My Approach</h2>
+        <p class="cred-bio fade-up">I came to this work the same way most of my clients arrive at it — through personal frustration with conventional approaches that addressed only the surface. Years of nutrition study, an ongoing biohacking practice, and nine years of full-contact martial arts gave me a working understanding of how the body actually moves, recovers, coordinates, and performs under pressure. Most practitioners understand the body either from the outside — through training — or through a clinical lens. I work both at once, which is exactly what real change requires.</p>
+
+        <p class="cred-contrast fade-up">Very few practitioners anywhere work at the intersection of clinical biomarker analysis, nutrition, and martial arts-based movement therapy simultaneously. Every recommendation in this protocol — diet, supplements, lifestyle adjustments, biohacking methods — is derived from peer-reviewed scientific research. Nothing here is based on personal preference, market trends, or what is currently popular in the fitness industry.</p>
+
+        <p class="cred-contrast fade-up">This is not a niche offering. It is a gap in the market that took nearly a decade of parallel study and practice to fill. I do not take every client who enquires. The 15-minute call is itself a filter — if I cannot genuinely help you, I will say that directly.</p>
+
+        <div class="badges fade-up">
+          <span class="badge">Functional Nutrition</span>
+          <span class="badge">Biohacking &amp; Advanced Diagnostics</span>
+          <span class="badge">Women's Health &amp; Hormonal Wellness</span>
+          <span class="badge">Movement &amp; Strength Training</span>
+          <span class="badge">Martial Arts &amp; Coordination Systems</span>
+          <span class="badge">Root Cause Approach</span>
+        </div>
+
+        <p class="cred-footer fade-up">9 years full-contact Karate · Kali &amp; Hubud · 10 years Calisthenics · Functional Nutrition &amp; Biohacking practice</p>
+        <p class="cred-upcoming fade-up">Currently integrating Tai Chi and Qi Gong into personal practice — disciplines focused on mental stillness, breath control, and meditative movement. These will be incorporated into the protocol's recovery and mental conditioning architecture soon.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — THE PROBLEM -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-inner">
+      <span class="eyebrow fade-up">Does This Sound Familiar</span>
+      <h2 class="problem-opener fade-up-strong" data-animate="chars">You are not lazy. Your system is running on the wrong instructions.</h2>
+      <p class="problem-para fade-up">The 3pm crash. Wired at midnight. Caffeine before 9am just to function. Brain fog by mid-morning on days when your most important decisions get made. Hours lost to low-grade fatigue that never fully lifts. The colleagues who seem to have more energy, think faster, recover from travel overnight — they are not more disciplined than you. Their biology is working. Yours has been asking for help for a long time.</p>
+
+      <p class="problem-para fade-up">For professional women: hormonal shifts dismissed as "normal for your age." Weight that doesn't respond to anything you try. Energy that disappeared and took your patience, your focus, and your margin with it. A body managing a career, a family, and a health crisis simultaneously — and losing ground on all three. Not because you are not strong enough. Because no one has looked at what is actually driving it.</p>
+
+      <p class="problem-para fade-up">Think about what this is actually costing you. Every month you spend at 60% capacity is a month of decisions made on borrowed energy. Every year your sleep stays broken is a year your recovery, your mood, and your immune system pay the price. The gym you attend that isn't fixing anything: time. The supplements with no clinical basis for your specific biology: money. The doctor visits that end with "your results are normal": more time, no answers. You are not getting a return on any of it — because none of it starts with what is actually wrong.</p>
+
+      <p class="problem-pivot fade-up">The problem is not effort. You have effort. The problem is that no one has looked at what is happening inside your biology — and built everything around that answer.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION A — A DAY IN YOUR LIFE (MIRROR) -->
+<section class="mirror" id="mirror">
+  <div class="mirror-wrap" id="mirrorWrap">
+    <div class="mirror-sticky">
+      <div class="mirror-header">
+        <span class="eyebrow">The Mirror</span>
+        <h2 class="mirror-headline">A Day In Your Life.</h2>
+        <p class="mirror-sub">Read these slowly. If three or more land — this page was written for you.</p>
+      </div>
+      <div class="mirror-track-wrap">
+        <div class="mirror-track" id="mirrorTrack">
+          <div class="mirror-card">
+            <div class="mirror-card-time">06:30</div>
+            <div class="mirror-card-scene">&ldquo;Can I get away with ten more minutes?&rdquo;</div>
+            <div class="mirror-card-footer">You haven't moved yet and the day is already a negotiation.</div>
+          </div>
+          <div class="mirror-card">
+            <div class="mirror-card-time">08:15</div>
+            <div class="mirror-card-scene">&ldquo;Third coffee. Still not there.&rdquo;</div>
+            <div class="mirror-card-footer">Your nervous system is borrowing from tomorrow to get through today.</div>
+          </div>
+          <div class="mirror-card">
+            <div class="mirror-card-time">11:00</div>
+            <div class="mirror-card-scene">&ldquo;I used to be sharp at this hour.&rdquo;</div>
+            <div class="mirror-card-footer">The lag between thinking and deciding is getting longer every year.</div>
+          </div>
+          <div class="mirror-card">
+            <div class="mirror-card-time">15:00</div>
+            <div class="mirror-card-scene">&ldquo;Running on empty. Staring at the screen.&rdquo;</div>
+            <div class="mirror-card-footer">The crash is not weakness. It is a system asking for something you haven't given it.</div>
+          </div>
+          <div class="mirror-card">
+            <div class="mirror-card-time">20:30</div>
+            <div class="mirror-card-scene">&ldquo;Nothing left for anyone at home.&rdquo;</div>
+            <div class="mirror-card-footer">The best version of you stopped showing up around the same time the symptoms started.</div>
+          </div>
+          <div class="mirror-card">
+            <div class="mirror-card-time">23:45</div>
+            <div class="mirror-card-scene">&ldquo;Exhausted but can't switch off.&rdquo;</div>
+            <div class="mirror-card-footer">This is not insomnia. This is a nervous system that never learned it was safe to rest.</div>
+          </div>
+        </div>
+      </div>
+      <div class="mirror-progress"><div class="mirror-progress-fill" id="mirrorProgressFill"></div></div>
+    </div>
+  </div>
+  <p class="mirror-closing">"If this is your day — your biology is asking for something specific. Not motivation. Not another supplement. Not another app. The gap between who you are at your best and who shows up every day is not a character flaw. It is a biological signal. And it is getting louder."</p>
+</section>
+
+<!-- COST OF INACTION -->
+<div class="inaction-block">
+  <div class="container">
+    <div class="inaction-inner fade-up">
+      <span class="inaction-label">THE COST OF WAITING</span>
+      <p class="inaction-copy">Every month this stays unaddressed, your cortisol stays elevated. Your blood panels drift further from optimal. Your nervous system stays locked in a state it was never designed to hold permanently. The body does not pause while you consider your options. It continues on the trajectory it is on — which is the trajectory that brought you to this page. A year from now you will either have fixed this, or you will have spent another year experiencing exactly what you are experiencing now, in a body that is twelve months further along a path you did not choose.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4 — THE DIFFERENCE -->
+<section class="alt" id="method">
+  <div class="container">
+    <div class="diff-intro">
+      <span class="eyebrow fade-up">The Difference</span>
+      <h2 class="section-title diff-headline fade-up-strong" data-animate="chars">Every Other Programme Trains 2 Components of Fitness. This One Trains All of Them.</h2>
+      <p class="diff-sub fade-up">Here is something the fitness industry will not tell you: most trainers you will encounter have spent the majority of their careers training for aesthetics — hypertrophy, muscle size, visible definition. That is what they understand deeply, and that is what they teach. The entire industry built its identity around that model, which is why most people still equate getting fit with getting bigger. If visible muscle is your goal, they may be adequate. But if you want a body that performs, recovers, coordinates, and sustains itself across the actual demands of a professional life — that requires a completely different framework. The human body has 9 components of fitness. Standard programmes train 1 or 2. Hybrid coaches add HIIT and call it complete. Neither touches coordination, agility, reaction speed, mental sharpness, or the internal environment driving all of it.</p>
+    </div>
+
+    <div class="compare-grid">
+      <div class="compare-card muted-card fade-up">
+        <div class="compare-label">What Most Coaches Offer</div>
+        <div class="compare-title">Standard Gym</div>
+        <div class="compare-list">
+          <ul>
+            <li>Strength training</li>
+            <li>Maybe HIIT</li>
+            <li>A nutrition PDF</li>
+            <li>No internal work</li>
+            <li>No adaptation</li>
+            <li>No root cause thinking</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="compare-card muted-card fade-up">
+        <div class="compare-label">What "Advanced" Coaches Offer</div>
+        <div class="compare-title">Hybrid Model</div>
+        <div class="compare-list">
+          <ul>
+            <li>Strength + HIIT</li>
+            <li>Called a complete programme</li>
+            <li>Still missing: martial arts components</li>
+            <li>No nervous system work</li>
+            <li>No blood work, no biohacking</li>
+            <li>No coordination, agility, or recovery architecture</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="compare-card featured fade-up">
+        <div class="compare-label">What This Offers</div>
+        <div class="compare-title">The Subh Protocol</div>
+        <div class="compare-list">
+          <ul>
+            <li>Strength · HIIT · Calisthenics</li>
+            <li>Karate Kata for mental sharpness</li>
+            <li>Filipino Martial Arts: Kali &amp; Hubud</li>
+            <li>Flexibility, mobility &amp; breathwork</li>
+            <li>Nutrition &amp; biohacking</li>
+            <li>Blood work-guided intervention</li>
+            <li>Weekly follow-ups for 3 months</li>
+            <li>Every component of fitness — inside and outside</li>
+            <li>Self-defence awareness embedded through Kali &amp; Hubud</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p class="diff-closing fade-up">This is not a gym programme with a nutrition add-on. This is a complete system — built from your blood, trained through your body, backed by scientific literature, and adapted to your life.</p>
+  </div>
+</section>
+
+<!-- SECTION B — THREE METHODOLOGY PILLARS -->
+<section id="pillars" style="background:#080808;">
+  <div class="container">
+    <div class="pillars-intro">
+      <span class="eyebrow fade-up">How It Works</span>
+      <h2 class="section-title pillars-headline fade-up-strong" data-animate="chars">The Three Layers of the Protocol</h2>
+      <p class="pillars-sub fade-up">Most programmes operate on one layer. This protocol operates on three simultaneously — because the body does not separate them. A fourth layer focused on meditative movement, breath mastery, and mental stillness through Tai Chi and Qi Gong is currently in development and will be integrated into the protocol soon.</p>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card fade-up" style="transition-delay:0s;">
+        <span class="pillar-num">01</span>
+        <h3 class="pillar-title">Movement Intelligence</h3>
+        <p class="pillar-body">Complete, coordinated, full-body patterns that restore what years of sitting have disabled. Karate Kata, Kali Hubud, calisthenics, and strength — not isolated exercises. Patterns your body was built for and hasn't done in years. The Kali and Hubud components also build real self-defence awareness as a natural by-product — not taught as a separate course, but embedded in the movement itself.</p>
+        <div class="pillar-tags">Coordination&nbsp;·&nbsp;Agility&nbsp;·&nbsp;Strength&nbsp;·&nbsp;Reaction Speed&nbsp;·&nbsp;Mental Sharpness&nbsp;·&nbsp;Self-Defence Awareness</div>
+      </div>
+
+      <div class="pillar-card fade-up" style="transition-delay:0.15s;">
+        <span class="pillar-num">02</span>
+        <h3 class="pillar-title">Nervous System Conditioning</h3>
+        <p class="pillar-body">Specific physical practice that trains your body to shift between high-alert and deep-rest. This is why sleep improves. This is why the 3pm crash disappears. This is the layer that no gym programme touches.</p>
+        <div class="pillar-tags">Stress Recovery&nbsp;·&nbsp;Sleep Architecture&nbsp;·&nbsp;HRV&nbsp;·&nbsp;Breathwork</div>
+      </div>
+
+      <div class="pillar-card fade-up" style="transition-delay:0.3s;">
+        <span class="pillar-num">03</span>
+        <h3 class="pillar-title">Biological Optimisation</h3>
+        <p class="pillar-body">Blood work analysis, nutrition, targeted supplements, biohacking protocols, and lifestyle adjustments — layered precisely in the sequence your body needs them, not stacked randomly. Every intervention is traceable to peer-reviewed scientific literature. If it cannot be justified by research, it does not make it into the protocol.</p>
+        <div class="pillar-tags">Blood Work&nbsp;·&nbsp;Nutrition&nbsp;·&nbsp;Biohacking&nbsp;·&nbsp;Hormonal Balance</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIME SAVINGS + FUTURE VISION -->
+<div class="vision-block">
+  <div class="container">
+    <div class="vision-inner">
+      <div class="vision-left fade-up">
+        <span class="eyebrow">What You Get Back</span>
+        <h3 class="vision-headline">Your Time. Your Energy. Your Edge.</h3>
+        <p class="vision-sub">The protocol is not just a health investment. For a busy professional, it is a performance investment — because everything you do depends on the system running it.</p>
+      </div>
+      <div class="vision-right">
+        <div class="vision-item fade-up">
+          <span class="vision-icon">→</span>
+          <div>
+            <strong>2–3 productive hours restored daily</strong>
+            <p>When the afternoon crash disappears, so does the 3pm dead zone. That is 10–15 hours a week of functional, clear-headed time returned to your work and your life.</p>
+          </div>
+        </div>
+        <div class="vision-item fade-up">
+          <span class="vision-icon">→</span>
+          <div>
+            <strong>Faster decisions. Sharper thinking. Fewer mistakes.</strong>
+            <p>A nervous system no longer in chronic stress does not just feel better. It processes faster, recalls better, and makes fewer errors under pressure. This is measurable — and your career depends on it.</p>
+          </div>
+        </div>
+        <div class="vision-item fade-up">
+          <span class="vision-icon">→</span>
+          <div>
+            <strong>Sleep that actually recovers you</strong>
+            <p>When sleep architecture is restored, you need less of it to feel more from it. Most clients report needing 30–45 fewer minutes of sleep per night while feeling significantly more rested.</p>
+          </div>
+        </div>
+        <div class="vision-item fade-up">
+          <span class="vision-icon">→</span>
+          <div>
+            <strong>End the supplement and GP appointment cycle</strong>
+            <p>Stop spending on supplements that have no clinical basis for your specific biology. Stop paying for doctor visits that end with "everything looks fine." This protocol ends the loop by finding what is actually wrong — once.</p>
+          </div>
+        </div>
+        <div class="vision-item fade-up">
+          <span class="vision-icon">→</span>
+          <div>
+            <strong>A body you can rely on outside the gym</strong>
+            <p>Not just stronger. Coordinated, resilient, and capable under real-world demand — not just in a controlled environment with mirrors and machines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5 — SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="services-intro">
+      <span class="eyebrow fade-up">Two Ways In</span>
+      <h2 class="section-title services-headline fade-up-strong" data-animate="chars">Choose Where You Start</h2>
+      <p class="services-orient fade-up">Two distinct services. Fix the internal environment with the Root Cause Audit. Rebuild every component of physical fitness with the Movement Protocol. Or begin with one and add the other when you are ready.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- CARD 1 — Root Cause Audit -->
+      <div class="service-card featured fade-up">
+        <div class="service-card-top">
+          <span class="service-badge">Fix The Inside</span>
+          <div class="service-duration-badge featured-dur">12 Weeks</div>
+        </div>
+        <h3 class="service-title">Root Cause Audit</h3>
+        <p class="service-tagline">For the professional who needs to understand what is actually driving their symptoms — before committing to anything else.</p>
+        <div class="service-highlight-stat">Blood work-guided intervention alone typically reduces symptoms by <strong>40–60%.</strong> Every recommendation is backed by peer-reviewed scientific literature.</div>
+        <div class="service-divider"></div>
+        <div class="service-features">
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Comprehensive blood work analysis &amp; full biomarker audit</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Complete symptom, lifestyle &amp; environment assessment</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Root cause identification — connecting biomarkers, habits &amp; history</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Personalised nutrition protocol built around your findings</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Targeted supplement guidance based on your specific biomarkers</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Biohacking &amp; lifestyle adjustment plan</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Advanced test pathway recommendations for deeper investigation</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Weekly follow-ups for the full 12 weeks</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>3-day post-handover window for clarifying questions</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Compulsory biomarker retest at week 12</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Complete PDF protocol — every recommendation backed by scientific literature</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-primary">Book Free 15-Min Call</a>
+      </div>
+
+      <!-- CARD 2 — The Movement Protocol -->
+      <div class="service-card fade-up">
+        <div class="service-card-top">
+          <span class="service-badge">Move Better</span>
+          <div class="service-duration-badge">4 Weeks · Renewable</div>
+        </div>
+        <h3 class="service-title">The Movement Protocol</h3>
+        <p class="service-tagline">For the professional who wants every component of physical fitness rebuilt — without the clinical commitment. The training methodology, standalone.</p>
+        <div class="service-highlight-stat">The only movement protocol covering strength, aerobic capacity, coordination, agility, mental sharpness, and self-defence awareness — in one structured 4-week system.</div>
+        <div class="service-divider"></div>
+        <div class="service-features">
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Full 6-day training cycle — every component of fitness addressed</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Strength training · HIIT · Calisthenics</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Kali, Hubud &amp; Karate Kata — coordination, agility &amp; mental sharpness</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Self-defence awareness embedded through Kali &amp; Hubud</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Flexibility, mobility, breathwork &amp; active recovery</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Live 1-on-1 video sessions — 60 minutes, strictly timed</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>HRV-based training — session intensity guided by recovery data, not guesswork</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Performance report generated and delivered every 4 weeks</span>
+          </div>
+        </div>
+        <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-ghost">Book Free 15-Min Call</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — SOCIAL PROOF -->
+<section class="alt">
+  <div class="container">
+    <div class="testimonials-intro">
+      <span class="eyebrow fade-up">What Changes</span>
+      <h2 class="section-title fade-up-strong" data-animate="chars" style="font-size:clamp(2.2rem,3.6vw,3rem);">Real Outcomes. Real People.</h2>
+    </div>
+
+    <p class="testimonial-frame fade-up">These are not exceptional results. They are what consistently happens when the root cause is identified and addressed — not managed, not suppressed, not guessed at.</p>
+
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up">
+        <p class="testimonial-quote">By week four I stopped reaching for coffee at 3pm. By month three my energy was steadier than it has been in a decade. The blood work showed exactly what we had been working on — and exactly what had changed.</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-name">Rohan</span>
+          <span class="testimonial-role">VP, Technology · Bangalore</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <p class="testimonial-quote">I had spent two years being told my fatigue was stress and my weight was age. Subham looked at the actual numbers, built a protocol around my hormones, and I am down 9 kilos and finally sleeping through the night.</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-name">Priya</span>
+          <span class="testimonial-role">Founder · Mumbai</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <p class="testimonial-quote">My fasting sugar was creeping up year on year. Three months on the protocol and my HbA1c is back in the normal range. No medication. Just real, structured changes I now understand.</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-name">Vikram</span>
+          <span class="testimonial-role">Senior Partner, Consulting · Delhi</span>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-up">
+        <p class="testimonial-quote">I have lifted weights for years but always felt fragile outside the gym. The martial arts sessions and recovery work changed that. I am stronger, more mobile, and my body feels reliable for the first time.</p>
+        <div class="testimonial-meta">
+          <span class="testimonial-name">Aditya</span>
+          <span class="testimonial-role">Product Director · Pune</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-strip fade-up">
+      <div class="stat-cell">
+        <div class="stat-number">40–60%</div>
+        <div class="stat-label">Average symptom reduction with blood work intervention</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">6 Days</div>
+        <div class="stat-label">Weekly training covering all components of fitness</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">12 Weeks</div>
+        <div class="stat-label">Root Cause Audit duration with compulsory biomarker retest</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-number">9</div>
+        <div class="stat-label">Individual fitness components trained simultaneously</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 — FILTER -->
+<section>
+  <div class="container">
+    <div class="filter-intro">
+      <span class="eyebrow fade-up">Honest Filter</span>
+      <h2 class="section-title fade-up-strong" data-animate="chars" style="font-size:clamp(2.2rem,3.6vw,3rem);">This Is Not For Everyone</h2>
+    </div>
+
+    <div class="filter-grid">
+      <div class="filter-card fit fade-up">
+        <h3>Right For You</h3>
+        <div class="filter-item">
+          <span class="filter-icon">+</span>
+          <span>You want to understand what is wrong, not just manage symptoms.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">+</span>
+          <span>You are willing to get a comprehensive blood test done.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">+</span>
+          <span>You can commit 6 days a week to the protocol.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">+</span>
+          <span>You understand that results come from a system, not a single session.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">+</span>
+          <span>You are ready to change sleep, nutrition, movement and lifestyle habits.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">+</span>
+          <span>You want something that works on your body inside and outside simultaneously.</span>
+        </div>
+      </div>
+
+      <div class="filter-card notfit fade-up">
+        <h3>Not Right For You</h3>
+        <div class="filter-item">
+          <span class="filter-icon">×</span>
+          <span>You want results in 30 days without changing your habits.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">×</span>
+          <span>You are not open to getting blood work done.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">×</span>
+          <span>You want a workout PDF and to be left alone.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">×</span>
+          <span>You are primarily looking for the lowest-cost option.</span>
+        </div>
+        <div class="filter-item">
+          <span class="filter-icon">×</span>
+          <span>You want a trainer who counts reps, not a practitioner who reads your biomarkers.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="filter-closing fade-up">If the left side resonates — you are who this was built for. Book the call. If the right side resonates — this is not the right fit right now, and knowing that is valuable. Return when you are ready.</p>
+  </div>
+</section>
+
+<!-- SECTION 8 — WHAT HAPPENS NEXT -->
+<section class="alt">
+  <div class="container">
+    <div class="process-intro">
+      <span class="eyebrow fade-up">The Process</span>
+      <h2 class="section-title fade-up-strong" data-animate="chars" style="font-size:clamp(2.2rem,3.6vw,3rem);">What Happens When You Reach Out</h2>
+    </div>
+
+    <div class="next-grid">
+      <div class="next-card fade-up">
+        <span class="next-step-num">01</span>
+        <div class="next-step-title">Free 15-Min Call</div>
+        <p class="next-step-desc">No pitch. I ask specific questions about your symptoms, lifestyle, energy, and goals. Honest about whether there is a fit.</p>
+      </div>
+      <div class="next-card fade-up">
+        <span class="next-step-num">02</span>
+        <div class="next-step-title">Questionnaire</div>
+        <p class="next-step-desc">After the call, if you decide to proceed, you pay and receive a detailed questionnaire.</p>
+      </div>
+      <div class="next-card fade-up">
+        <span class="next-step-num">03</span>
+        <div class="next-step-title">Blood Test Recommendation</div>
+        <p class="next-step-desc">Based on your answers, I recommend the exact comprehensive test panel required. No other report is accepted.</p>
+      </div>
+      <div class="next-card fade-up">
+        <span class="next-step-num">04</span>
+        <div class="next-step-title">The Audit</div>
+        <p class="next-step-desc">I look at everything: biomarkers, symptoms, lifestyle, medications, environment. Find the connections. Build your protocol.</p>
+      </div>
+      <div class="next-card fade-up">
+        <span class="next-step-num">05</span>
+        <div class="next-step-title">Protocol Begins</div>
+        <p class="next-step-desc">Your protocol begins — diet, supplements, biohacking, lifestyle adjustments, and 6-day training cycle (if opted) all traceable to scientific literature. Weekly follow-ups. 12-week biomarker retest.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 — FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-intro">
+      <span class="eyebrow fade-up">FAQ</span>
+      <h2 class="section-title fade-up-strong" data-animate="chars" style="font-size:clamp(2.2rem,3.6vw,3rem);">Common Questions</h2>
+    </div>
+
+    <div class="faq-list">
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>Why is blood work compulsory for the Root Cause Audit?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Because symptoms alone are not enough. Biomarkers tell what is actually happening inside the body. Without that data, any protocol is guesswork. I work only with comprehensive tests — not partial reports — because the audit is only as good as the data.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>Are the recommendations in the protocol actually based on science?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Every single recommendation in the protocol — the nutrition approach, the supplement choices, the lifestyle adjustments, the biohacking methods, the recovery strategies — is derived from peer-reviewed scientific literature. Nothing is based on personal preference, nothing is trend-driven, and nothing is included because it is popular right now. If a recommendation cannot be justified by research specific to your biomarker findings, it does not make it into your protocol. This is not a generic wellness plan. It is a clinically reasoned document built around your specific biological data.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>What if I already have blood reports?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">The specific comprehensive test I recommend must be done. Existing partial reports can be reviewed as context but cannot replace the required panel.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>Can I start with just the Root Cause Audit and upgrade later?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. The Root Cause Audit and the Movement Protocol are both designed to stand alone and complement each other directly. Start with whichever your situation demands and add the other when you are ready — discussed on the call.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>How does online coaching work for training?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sessions are live, 1-on-1 via video. 60 minutes, strictly timed. If you are late, the session still ends on time — other clients' schedules are equally respected.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>Why 6 days a week? Can I just train 3 or 4 days?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Six days is the structure that allows every component of fitness to be trained with the frequency it requires. Three days of training against six days of a sedentary desk job produces limited returns — it may offer some benefit, but it will not deliver the depth of change this protocol is built to create. You cannot teach coordination, nervous system conditioning, strength, endurance, and recovery in three sessions a week without cutting corners on everything. That said, if your schedule genuinely allows only 3 or 4 days, the protocol can be adapted. The structure, the scope, and the investment will be adjusted accordingly — and it is something we discuss directly on the call.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>What does the weekly training structure actually look like?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            The 6-day structure is built around six distinct training focuses — no two consecutive days work the same system:
+            <ul class="faq-week-list">
+              <li><strong>3 days — Strength:</strong> Compound movements, progressive overload, and calisthenics patterns. Structural capacity built across multiple sessions so it actually holds.</li>
+              <li><strong>1 day — Aerobic Capacity:</strong> HIIT-based cardiovascular conditioning. Metabolic output, speed, and endurance — the layer most strength programmes ignore entirely.</li>
+              <li><strong>1 day — Mental Focus &amp; Sharpness:</strong> Kali, Hubud, and Karate Kata. Coordination, agility, reaction speed, and sustained mental sharpness — trained through movement, not meditation apps. Self-defence awareness develops as a natural by-product.</li>
+              <li><strong>1 day — Flexibility, Mobility, Breathwork &amp; Recovery:</strong> The day most people skip and then wonder why their body breaks down. Joint health, range of motion, nervous system downregulation, and active restoration — built into the week by design.</li>
+              <li><strong>1 day — Complete Rest:</strong> Non-negotiable. Recovery is not the absence of training. It is training.</li>
+            </ul>
+            If 6 days is not workable for your schedule, a 3 or 4-day adapted version is available — discussed on the call.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>I am a woman with hormonal issues — is this relevant for me?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. I hold specific expertise in Women's Health and Hormonal Wellness. Hormonal patterns show up in blood work. The protocol is built around your specific findings, not a generic female template.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>How long before I see changes?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Blood work-guided interventions typically show 40–60% symptom reduction within the first 12 weeks. Physical and energy changes begin in weeks 2–4 for most clients. The compulsory retest at 12 weeks shows exactly what has shifted.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>What does it cost?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Discussed directly on the call.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 — FINAL CTA -->
+<section class="final-cta" id="cta">
+  <div class="container">
+    <div class="final-cta-inner">
+      <h2 class="final-headline fade-up-strong" data-animate="chars">THE CALL COSTS NOTHING. ANOTHER YEAR OF SILENCE DOES.</h2>
+      <p class="final-sub fade-up">You have read this entire page. Something on it landed — otherwise you would not still be here. That recognition is the signal. The call is 15 minutes. No pitch. No pressure. Just an honest conversation about whether what I do matches what you need. If it does, we talk next steps. If it does not, I will tell you directly. What you cannot afford is another year at 60% — in a body you have stopped trusting, on energy that was never really yours to spend.</p>
+      <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-primary btn-large fade-up">Book Your Free 15-Min Call</a>
+      <p class="cta-scarcity fade-up">Maximum 8 clients at a time. Spots open when clients complete their protocol.</p>
+
+      <!-- REPLACE YOURNUMBERHERE IN THE WHATSAPP LINK BELOW WITH YOUR NUMBER IN INTERNATIONAL FORMAT e.g. 919876543210 (no + sign, no spaces) -->
+      <div class="contact-options fade-up">
+        <p class="contact-options-label">Prefer to reach out directly?</p>
+        <div class="contact-btns">
+          <a class="contact-btn contact-btn-wa"
+             href="https://wa.me/YOURNUMBERHERE"
+             target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+              <path d="M12 0C5.373 0 0 5.373 0 12c0 2.126.555 4.122 1.528 5.855L0 24l6.336-1.48A11.954 11.954 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.897 0-3.67-.516-5.188-1.414l-.37-.22-3.764.879.918-3.666-.242-.377A9.938 9.938 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+            </svg>
+            WhatsApp
+          </a>
+          <a class="contact-btn contact-btn-ig"
+             href="https://ig.me/m/subh.protocol"
+             target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+            </svg>
+            Instagram DM
+          </a>
+        </div>
+        <p class="micro" style="margin-top:24px;">No pitch. No obligation.</p>
+        <div class="final-instagram-follow">
+          Follow · <a href="https://instagram.com/subh.protocol" target="_blank" rel="noopener">@subh.protocol</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 11 — FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">THE SUBH PROTOCOL</div>
+      <nav class="footer-nav">
+        <a href="#method">Method</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener">Book</a>
+      </nav>
+      <div class="footer-meta">
+        Working Remotely Worldwide<br />
+        @subh.protocol
+      </div>
+    </div>
+    <div class="footer-bottom">© The Subh Protocol. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- HERO HEADLINE WORD SPLIT ----------
+  function setupHeroHeadline(){
+    var headline = document.getElementById('heroHeadline');
+    if (!headline) return;
+    var text = headline.textContent.trim();
+    var words = text.split(/\s+/);
+    headline.innerHTML = words.map(function(w){
+      return '<span class="word"><span>' + w + '</span></span>';
+    }).join(' ');
+
+    if (prefersReducedMotion){
+      headline.classList.add('animated');
+      return;
+    }
+
+    var spans = headline.querySelectorAll('.word span');
+    spans.forEach(function(span, i){
+      span.style.transitionDelay = (i * 0.12) + 's';
+    });
+    requestAnimationFrame(function(){
+      setTimeout(function(){ headline.classList.add('animated'); }, 100);
+    });
+  }
+
+  // ---------- CHARACTER SPLIT FOR HEADLINES ----------
+  function splitChars(el){
+    if (el.dataset.split === 'done') return;
+    var text = el.textContent;
+    var html = '';
+    var charIndex = 0;
+    for (var i=0;i<text.length;i++){
+      var ch = text[i];
+      if (ch === ' '){
+        html += ' ';
+      } else {
+        html += '<span class="stagger-char" style="transition-delay:' + (charIndex * 0.025) + 's">' + ch + '</span>';
+        charIndex++;
+      }
+    }
+    el.innerHTML = html;
+    el.dataset.split = 'done';
+  }
+
+  function setupCharAnimations(){
+    var charEls = document.querySelectorAll('[data-animate="chars"]');
+    charEls.forEach(splitChars);
+  }
+
+  // ---------- INTERSECTION OBSERVER ANIMATIONS ----------
+  function setupScrollAnimations(){
+    if (!('IntersectionObserver' in window) || prefersReducedMotion){
+      document.querySelectorAll('.fade-up, .fade-up-strong, .stagger-char, .eyebrow').forEach(function(el){
+        el.classList.add('in-view');
+      });
+      return;
+    }
+
+    var observer = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          var el = entry.target;
+          el.classList.add('in-view');
+          if (el.dataset.animate === 'chars'){
+            var chars = el.querySelectorAll('.stagger-char');
+            chars.forEach(function(c){ c.classList.add('in-view'); });
+          }
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up, .fade-up-strong, [data-animate="chars"], .eyebrow').forEach(function(el){
+      observer.observe(el);
+    });
+  }
+
+  // ---------- SCROLL PROGRESS LINE ----------
+  function setupScrollProgress(){
+    var bar = document.getElementById('scrollProgress');
+    if (!bar) return;
+    function update(){
+      var scrollTop = window.scrollY || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+      bar.style.height = pct + '%';
+    }
+    window.addEventListener('scroll', update, { passive:true });
+    update();
+  }
+
+  // ---------- NAV SCROLL STATE ----------
+  function setupNavScroll(){
+    var nav = document.getElementById('mainNav');
+    if (!nav) return;
+    function update(){
+      if (window.scrollY > 50){
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }
+    window.addEventListener('scroll', update, { passive:true });
+    update();
+  }
+
+  // ---------- 3D CARD TILT ----------
+  function setupCardTilt(){
+    if (prefersReducedMotion) return;
+    var cards = document.querySelectorAll('.glass-card, .service-card, .testimonial-card, .next-card, .compare-card, .filter-card');
+    cards.forEach(function(card){
+      var rect;
+      function onMove(e){
+        rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var cx = rect.width / 2;
+        var cy = rect.height / 2;
+        var rotateY = ((x - cx) / cx) * 2;
+        var rotateX = -((y - cy) / cy) * 2;
+        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+      }
+      function onLeave(){
+        card.style.transform = '';
+      }
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+    });
+  }
+
+  // ---------- FAQ ACCORDION ----------
+  function setupFAQ(){
+    var items = document.querySelectorAll('.faq-item');
+    items.forEach(function(item){
+      var btn = item.querySelector('.faq-question');
+      var ans = item.querySelector('.faq-answer');
+      if (!btn || !ans) return;
+      btn.addEventListener('click', function(){
+        var isOpen = item.classList.contains('open');
+        if (isOpen){
+          ans.style.maxHeight = '0px';
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        } else {
+          ans.style.maxHeight = ans.scrollHeight + 'px';
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  }
+
+  // ---------- SMOOTH ANCHOR SCROLL ----------
+  function setupAnchorOffset(){
+    document.querySelectorAll('a[href^="#"]').forEach(function(link){
+      link.addEventListener('click', function(e){
+        var href = link.getAttribute('href');
+        if (href.length < 2) return;
+        var target = document.querySelector(href);
+        if (!target) return;
+        e.preventDefault();
+        var top = target.getBoundingClientRect().top + window.scrollY - 70;
+        window.scrollTo({ top: top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+      });
+    });
+  }
+
+  // ---------- MIRROR HORIZONTAL SCROLL ----------
+  function setupMirrorScroll(){
+    var wrap = document.getElementById('mirrorWrap');
+    var track = document.getElementById('mirrorTrack');
+    var fill = document.getElementById('mirrorProgressFill');
+    if (!wrap || !track || !fill) return;
+
+    // Mobile fallback — no horizontal hijack
+    function isMobile(){ return window.innerWidth <= 768; }
+    if (isMobile() || prefersReducedMotion){
+      track.style.transform = '';
+      fill.style.width = '100%';
+      return;
+    }
+
+    var ticking = false;
+    function update(){
+      ticking = false;
+      var rect = wrap.getBoundingClientRect();
+      var wrapHeight = wrap.offsetHeight;
+      var vh = window.innerHeight;
+      var scrolled = -rect.top;
+      var maxScroll = wrapHeight - vh;
+      var progress = Math.min(Math.max(scrolled / maxScroll, 0), 1);
+
+      var trackWidth = track.scrollWidth;
+      var viewportWidth = window.innerWidth;
+      var translateMax = Math.max(trackWidth - viewportWidth + 60, 0);
+      var translateX = progress * translateMax;
+
+      track.style.transform = 'translate3d(' + (-translateX) + 'px, 0, 0)';
+      fill.style.width = (progress * 100) + '%';
+    }
+
+    function onScroll(){
+      if (!ticking){
+        requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+
+    function onResize(){
+      if (isMobile()){
+        track.style.transform = '';
+        fill.style.width = '100%';
+      } else {
+        update();
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive:true });
+    window.addEventListener('resize', onResize);
+    update();
+  }
+
+  // ---------- GRID FADE-UP STAGGER ----------
+  function setupGridStaggers(){
+    var grids = ['.compare-grid','.filter-grid','.next-grid','.testimonial-grid','.services-grid','.pillars-grid','.badges','.vision-right','.value-rows'];
+    grids.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(grid){
+        var children = grid.children;
+        var fadeIdx = 0;
+        for (var i=0;i<children.length;i++){
+          var child = children[i];
+          if (child.classList && (child.classList.contains('fade-up') || child.classList.contains('fade-up-strong'))){
+            if (!child.style.transitionDelay){
+              child.style.transitionDelay = (fadeIdx * 0.1) + 's';
+            }
+            fadeIdx++;
+          }
+        }
+      });
+    });
+  }
+
+  // ---------- STATS COUNTER ----------
+  function setupCounters(){
+    var stats = document.querySelector('.stats-strip');
+    if (!stats) return;
+    var cells = stats.querySelectorAll('.stat-number');
+    if (!cells.length) return;
+
+    var counterData = [
+      { target:60, format:function(n){ return n + '%'; },        finalText:'40–60%' },
+      { target:6,  format:function(n){ return n + ' Days'; },    finalText:'6 Days' },
+      { target:3,  format:function(n){ return n + ' Months'; },  finalText:'3 Months' },
+      { target:9,  format:function(n){ return String(n); },      finalText:'9' }
+    ];
+
+    if (prefersReducedMotion){
+      cells.forEach(function(cell, i){
+        if (counterData[i]) cell.textContent = counterData[i].finalText;
+      });
+      return;
+    }
+
+    function animateCell(cell, data){
+      var startTime = null;
+      var duration = 1500;
+      function step(ts){
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(data.target * eased);
+        cell.textContent = data.format(current);
+        if (progress < 1){
+          requestAnimationFrame(step);
+        } else {
+          cell.textContent = data.finalText;
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    var started = false;
+    function start(){
+      if (started) return;
+      started = true;
+      cells.forEach(function(cell, i){
+        if (counterData[i]) animateCell(cell, counterData[i]);
+      });
+    }
+
+    if (!('IntersectionObserver' in window)){ start(); return; }
+
+    // Set initial state to 0 so the count-up is visible
+    cells.forEach(function(cell, i){
+      if (counterData[i]) cell.textContent = counterData[i].format(0);
+    });
+
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          start();
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.4 });
+    obs.observe(stats);
+  }
+
+  // ---------- ORBIT SYSTEM ----------
+  function setupOrbit(){
+    var labels = document.getElementById('orbitLabels');
+    var system = document.getElementById('orbitSystem');
+    if (!labels || !system) return;
+
+    var components = [
+      'Strength','Power','Speed','Endurance',
+      'Flexibility','Agility','Coordination','Balance','Mental Sharpness'
+    ];
+    var count = components.length;
+    // Outer SVG ring r=192 in a 420px system → 192/210 = 91.4% of half
+    // Use 45.5% so labels sit just inside the outer ring
+    var radiusPct = 45.5;
+
+    components.forEach(function(name, i){
+      var angle = (i / count) * 2 * Math.PI - Math.PI / 2; // start at 12 o'clock
+      var x = 50 + radiusPct * Math.cos(angle);
+      var y = 50 + radiusPct * Math.sin(angle);
+      var el = document.createElement('div');
+      el.className = 'orbit-label';
+      el.style.left = x.toFixed(2) + '%';
+      el.style.top = y.toFixed(2) + '%';
+      el.innerHTML = '<span>' + name + '</span>';
+      labels.appendChild(el);
+    });
+  }
+
+  // ---------- INIT ----------
+  function init(){
+    setupHeroHeadline();
+    setupCharAnimations();
+    setupGridStaggers();
+    setupScrollAnimations();
+    setupScrollProgress();
+    setupNavScroll();
+    setupCardTilt();
+    setupFAQ();
+    setupAnchorOffset();
+    setupMirrorScroll();
+    setupCounters();
+    setupOrbit();
+  }
+
+  if (document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+</body>
+</html>
