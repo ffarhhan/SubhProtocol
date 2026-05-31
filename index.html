@@ -12,6 +12,7 @@
   /* ---------- RESET & BASE ---------- */
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
+
   body{
     font-family:'DM Sans',sans-serif;
     background:#0A0A0A;
@@ -21,6 +22,7 @@
     -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
   }
+
   img{max-width:100%;display:block;}
   a{color:inherit;text-decoration:none;}
   button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
@@ -103,8 +105,8 @@
     z-index:900;
     display:flex;
     align-items:center;
-    gap:4px;
-    padding:7px 8px 7px 18px;
+    gap:16px;
+    padding:8px 10px 8px 24px;
     border-radius:48px;
     background:rgba(255,255,255,0.07);
     -webkit-backdrop-filter:blur(24px);
@@ -113,10 +115,11 @@
     box-shadow:0 1px 0 rgba(255,255,255,0.2) inset,0 20px 60px -20px rgba(0,0,0,0.6);
     transition:all 0.4s ease;
     white-space:nowrap;
+    min-width:580px;
   }
   .nav.scrolled{
     background:rgba(10,10,10,0.88);
-    padding:5px 6px 5px 14px;
+    padding:6px 8px 6px 18px;
   }
   .nav-brand{
     display:flex;
@@ -145,7 +148,7 @@
   }
   .nav-links{
     display:flex;
-    gap:2px;
+    gap:10px;
     align-items:center;
   }
   .nav-links a{
@@ -155,7 +158,7 @@
     letter-spacing:0.08em;
     text-transform:uppercase;
     color:rgba(245,240,232,0.65);
-    padding:6px 10px;
+    padding:6px 14px;
     border-radius:30px;
     transition:all 0.3s ease;
   }
@@ -218,18 +221,33 @@
   /* ---------- GLASS CARD ---------- */
   .glass-card{
     background:linear-gradient(135deg,rgba(255,255,255,0.06) 0%,rgba(255,255,255,0.02) 100%);
-    -webkit-backdrop-filter:blur(20px) saturate(1.4);
-    backdrop-filter:blur(20px) saturate(1.4);
+    -webkit-backdrop-filter:blur(24px) saturate(1.6);
+    backdrop-filter:blur(24px) saturate(1.6);
     border:1px solid rgba(255,255,255,0.10);
-    border-radius:16px;
+    border-radius:20px;
     padding:40px;
-    box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
+    box-shadow:0 1px 0 rgba(255,255,255,0.18) inset,
+               0 30px 60px -20px rgba(0,0,0,0.7),
+               0 0 0 1px rgba(212,166,71,0.04);
     transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
     transform-style:preserve-3d;
     will-change:transform;
+    position:relative;
+    overflow:hidden;
+  }
+  .glass-card::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:1px;
+    background:linear-gradient(90deg,transparent,rgba(212,166,71,0.4),transparent);
+    pointer-events:none;
   }
   .glass-card:hover{
     border-color:rgba(212,166,71,0.35);
+    box-shadow:0 1px 0 rgba(255,255,255,0.18) inset,
+               0 40px 80px -20px rgba(0,0,0,0.8),
+               0 0 40px rgba(212,166,71,0.06);
   }
 
   /* ---------- HERO ---------- */
@@ -245,14 +263,16 @@
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse at 30% 50%,rgba(212,166,71,0.12) 0%,transparent 65%);
+    background:radial-gradient(ellipse at 30% 50%,rgba(212,166,71,0.06) 0%,transparent 60%),
+               linear-gradient(180deg,rgba(10,10,10,0.1) 0%,transparent 30%,rgba(10,10,10,0.4) 100%);
     pointer-events:none;
+    z-index:1;
   }
   .hero::after{
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse at 90% 90%,rgba(212,166,71,0.15) 0%,transparent 55%);
+    background:radial-gradient(ellipse at 80% 80%,rgba(212,166,71,0.04) 0%,transparent 50%);
     pointer-events:none;
     z-index:1;
   }
@@ -651,7 +671,7 @@
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:24px;
-    align-items:start;
+    align-items:stretch;
   }
   .service-card{
     position:relative;
@@ -739,6 +759,30 @@
     color:rgba(245,240,232,0.7);
     line-height:1.5;
     margin-bottom:30px;
+  }
+  .trial-callout{
+    background:rgba(212,166,71,0.05);
+    border:1px dashed rgba(212,166,71,0.3);
+    border-radius:10px;
+    padding:16px 18px;
+    margin-bottom:20px;
+  }
+  .trial-label{
+    display:block;
+    font-family:'Montserrat',sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:#D4A647;
+    margin-bottom:6px;
+  }
+  .trial-desc{
+    font-family:'DM Sans',sans-serif;
+    font-size:0.88rem;
+    color:rgba(245,240,232,0.6);
+    line-height:1.6;
+    margin:0;
   }
   .service-divider{
     height:1px;
@@ -935,27 +979,14 @@
   .testimonial-card{
     position:relative;
     background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.015) 100%);
-    backdrop-filter:blur(20px) saturate(1.4);
+    backdrop-filter:blur(24px) saturate(1.4);
     border:1px solid rgba(255,255,255,0.08);
     border-left:3px solid #D4A647;
     border-radius:0 16px 16px 0;
     padding:36px 36px 36px 40px;
     overflow:hidden;
     box-shadow:0 1px 0 rgba(255,255,255,0.15) inset, 0 30px 60px -20px rgba(0,0,0,0.6);
-    transition:all 0.5s cubic-bezier(0.23,1,0.32,1);
   }
-  .testimonial-card::before{
-    content:"";
-    position:absolute;
-    top:-20px;
-    right:10px;
-    font-family:'Bebas Neue',sans-serif;
-    font-size:180px;
-    color:rgba(212,166,71,0.08);
-    line-height:1;
-    pointer-events:none;
-  }
-  .testimonial-card::before{content:"\201C";}
   .testimonial-quote{
     font-size:1.05rem;
     color:rgba(245,240,232,0.85);
@@ -1233,8 +1264,9 @@
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse at 50% 0%,rgba(212,166,71,0.10) 0%,transparent 60%);
+    background:radial-gradient(ellipse at 50% 0%,rgba(212,166,71,0.05) 0%,transparent 50%);
     pointer-events:none;
+    z-index:1;
   }
   .final-cta-inner{
     position:relative;
@@ -1450,28 +1482,39 @@
   /* ---------- MARQUEE STRIP ---------- */
   .marquee{
     overflow:hidden;
-    padding:18px 0;
+    padding:22px 0;
     border-top:1px solid rgba(255,255,255,0.06);
     border-bottom:1px solid rgba(255,255,255,0.06);
     background:#0A0A0A;
-    position:relative;
-    z-index:2;
   }
   .marquee-track{
-    display:inline-flex;
-    white-space:nowrap;
-    animation:marqueeSlide 45s linear infinite;
-    will-change:transform;
+    display:flex;
+    width:200vw;
+    animation:marqueeScroll 22s linear infinite;
   }
   .marquee-content{
-    display:inline-block;
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    width:100vw;
+    min-width:100vw;
+    padding:0 48px;
+    box-sizing:border-box;
+  }
+  .mq-word{
     font-family:'Bebas Neue',sans-serif;
     font-size:18px;
-    letter-spacing:0.12em;
-    color:rgba(245,240,232,0.35);
-    padding-right:40px;
+    letter-spacing:0.22em;
+    color:rgba(245,240,232,0.32);
+    white-space:nowrap;
   }
-  @keyframes marqueeSlide{
+  .mq-dot{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:18px;
+    color:rgba(212,166,71,0.4);
+    padding:0 4px;
+  }
+  @keyframes marqueeScroll{
     from{transform:translateX(0);}
     to{transform:translateX(-50%);}
   }
@@ -1831,11 +1874,22 @@
     .next-grid{grid-template-columns:repeat(2,1fr);}
     .nav-links a:not(.nav-cta){display:none;}
     .services-grid{grid-template-columns:1fr 1fr;}
+    .pillar-card {
+      padding: 30px 18px;
+      min-height: auto;
+    }
+    .pillar-title {
+      font-size: 1.15rem;
+    }
+    .pillar-tags {
+      font-size: 10px;
+      letter-spacing: 0.02em;
+    }
   }
   @media (max-width:768px){
     section{padding:64px 0;}
     .container{padding:0 20px;}
-    .nav{top:14px;padding:8px 10px 8px 16px;}
+    .nav{top:14px;padding:8px 10px 8px 16px;min-width:auto;gap:4px;}
     .nav-brand{font-size:11px;}
     .nav-cta{padding:8px 14px !important;font-size:11px !important;}
     .hero{padding:110px 0 60px;}
@@ -1883,32 +1937,15 @@
     .final-headline{font-size:clamp(2.5rem,12vw,4rem);}
     .orbit-system{display:none;}
   }
-
-  /* ---------- REDUCED MOTION ---------- */
   @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{
-      animation-duration:0.001s !important;
-      animation-iteration-count:1 !important;
-      transition-duration:0.001s !important;
-      scroll-behavior:auto !important;
-    }
-    .fade-up,.fade-up-strong,.stagger-char{opacity:1 !important;transform:none !important;}
-    .hero-headline .word span{opacity:1 !important;transform:none !important;}
-    .orbit-ring-svg,.orbit-ring-svg-rev{animation:none !important;}
-    .orbit-glow{animation:none !important;}
-    .btn-primary{animation:none !important;}
-    .marquee-track{animation:none !important;}
-    .mirror-wrap{height:auto !important;}
-    .mirror-sticky{position:relative !important;top:auto !important;height:auto !important;overflow:visible !important;display:block !important;}
-    .mirror-track-wrap{overflow:visible !important;flex:none !important;}
-    .mirror-track{flex-direction:column !important;transform:none !important;gap:20px !important;}
-    .mirror-card{min-width:0 !important;max-width:none !important;height:auto !important;max-height:none !important;width:100% !important;}
-    .mirror-progress-fill{width:100% !important;}
-    .eyebrow::after{transition:none !important;}
+    .marquee-track{animation:none;}
   }
+
 </style>
 </head>
 <body>
+
+
 
 <!-- Scroll progress line -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -1929,6 +1966,7 @@
 
 <!-- SECTION 1 — HERO -->
 <header class="hero" id="hero">
+
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
@@ -1939,9 +1977,10 @@
           <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-primary">Book Your Free 15-Min Call</a>
           <span class="micro">No pitch. No obligation.</span>
         </div>
-        <p class="hero-scarcity fade-up">⬤ I work with a maximum of 8 clients at a time. When a spot opens, it goes to the next qualified person on the call list.</p>
+        <p class="hero-scarcity fade-up">⬤ I work with a limited number of clients at any time. Spots open when clients complete their protocol — and go to the next qualified person from the call list.</p>
       </div>
       <div class="hero-visual" aria-hidden="true">
+
         <div class="orbit-system" id="orbitSystem">
           <div class="orbit-glow"></div>
           <svg class="orbit-ring-svg" viewBox="0 0 420 420" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1979,8 +2018,32 @@
 <!-- MARQUEE STRIP -->
 <div class="marquee" aria-hidden="true">
   <div class="marquee-track">
-    <span class="marquee-content">ROOT CAUSE&nbsp;·&nbsp;BLOOD WORK&nbsp;·&nbsp;BIOHACKING&nbsp;·&nbsp;MARTIAL ARTS&nbsp;·&nbsp;MOVE BETTER&nbsp;·&nbsp;SCIENCE-BACKED&nbsp;·&nbsp;</span>
-    <span class="marquee-content">ROOT CAUSE&nbsp;·&nbsp;BLOOD WORK&nbsp;·&nbsp;BIOHACKING&nbsp;·&nbsp;MARTIAL ARTS&nbsp;·&nbsp;MOVE BETTER&nbsp;·&nbsp;SCIENCE-BACKED&nbsp;·&nbsp;</span>
+    <span class="marquee-content">
+      <span class="mq-word">ROOT CAUSE</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">BLOOD WORK</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">BIOHACKING</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">MARTIAL ARTS</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">MOVE BETTER</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">SCIENCE-BACKED</span>
+    </span>
+    <span class="marquee-content">
+      <span class="mq-word">ROOT CAUSE</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">BLOOD WORK</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">BIOHACKING</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">MARTIAL ARTS</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">MOVE BETTER</span>
+      <span class="mq-dot">·</span>
+      <span class="mq-word">SCIENCE-BACKED</span>
+    </span>
   </div>
 </div>
 
@@ -2187,21 +2250,21 @@
         <span class="pillar-num">01</span>
         <h3 class="pillar-title">Movement Intelligence</h3>
         <p class="pillar-body">Complete, coordinated, full-body patterns that restore what years of sitting have disabled. Karate Kata, Kali Hubud, calisthenics, and strength — not isolated exercises. Patterns your body was built for and hasn't done in years. The Kali and Hubud components also build real self-defence awareness as a natural by-product — not taught as a separate course, but embedded in the movement itself.</p>
-        <div class="pillar-tags">Coordination&nbsp;·&nbsp;Agility&nbsp;·&nbsp;Strength&nbsp;·&nbsp;Reaction Speed&nbsp;·&nbsp;Mental Sharpness&nbsp;·&nbsp;Self-Defence Awareness</div>
+        <div class="pillar-tags">Coordination · Agility · Strength · Reaction Speed · Mental Sharpness · Self-Defence Awareness</div>
       </div>
 
       <div class="pillar-card fade-up" style="transition-delay:0.15s;">
         <span class="pillar-num">02</span>
         <h3 class="pillar-title">Nervous System Conditioning</h3>
         <p class="pillar-body">Specific physical practice that trains your body to shift between high-alert and deep-rest. This is why sleep improves. This is why the 3pm crash disappears. This is the layer that no gym programme touches.</p>
-        <div class="pillar-tags">Stress Recovery&nbsp;·&nbsp;Sleep Architecture&nbsp;·&nbsp;HRV&nbsp;·&nbsp;Breathwork</div>
+        <div class="pillar-tags">Stress Recovery · Sleep Architecture&nbsp;· HRV · Breathwork</div>
       </div>
 
       <div class="pillar-card fade-up" style="transition-delay:0.3s;">
         <span class="pillar-num">03</span>
         <h3 class="pillar-title">Biological Optimisation</h3>
         <p class="pillar-body">Blood work analysis, nutrition, targeted supplements, biohacking protocols, and lifestyle adjustments — layered precisely in the sequence your body needs them, not stacked randomly. Every intervention is traceable to peer-reviewed scientific literature. If it cannot be justified by research, it does not make it into the protocol.</p>
-        <div class="pillar-tags">Blood Work&nbsp;·&nbsp;Nutrition&nbsp;·&nbsp;Biohacking&nbsp;·&nbsp;Hormonal Balance</div>
+        <div class="pillar-tags">Blood Work · Nutrition · Biohacking · Hormonal Balance</div>
       </div>
     </div>
   </div>
@@ -2259,6 +2322,7 @@
 
 <!-- SECTION 5 — SERVICES -->
 <section id="services">
+
   <div class="container">
     <div class="services-intro">
       <span class="eyebrow fade-up">Two Ways In</span>
@@ -2370,6 +2434,10 @@
             <span class="sf-check">✓</span>
             <span>Performance report generated and delivered every 4 weeks</span>
           </div>
+        </div>
+        <div class="trial-callout">
+          <span class="trial-label">Not ready to commit to 4 weeks?</span>
+          <p class="trial-desc">A paid 1-week trial is available. Experience the methodology, the sessions, and the structure — before deciding on the full protocol. Discussed on the call.</p>
         </div>
         <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-ghost">Book Free 15-Min Call</a>
       </div>
@@ -2600,6 +2668,16 @@
 
       <div class="faq-item fade-up">
         <button class="faq-question" aria-expanded="false">
+          <span>Can I try the Movement Protocol before committing to the full 4 weeks?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Yes. A paid 1-week trial is available for the Movement Protocol. It gives you direct experience of the training methodology, the session structure, and the 1-on-1 format — before you decide whether to commit to the full 4-week block. If the trial week confirms this is the right fit, the investment carries forward toward the full protocol. Details are discussed on the 15-minute call.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
           <span>How does online coaching work for training?</span>
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
@@ -2673,12 +2751,13 @@
 
 <!-- SECTION 10 — FINAL CTA -->
 <section class="final-cta" id="cta">
+
   <div class="container">
     <div class="final-cta-inner">
       <h2 class="final-headline fade-up-strong" data-animate="chars">THE CALL COSTS NOTHING. ANOTHER YEAR OF SILENCE DOES.</h2>
       <p class="final-sub fade-up">You have read this entire page. Something on it landed — otherwise you would not still be here. That recognition is the signal. The call is 15 minutes. No pitch. No pressure. Just an honest conversation about whether what I do matches what you need. If it does, we talk next steps. If it does not, I will tell you directly. What you cannot afford is another year at 60% — in a body you have stopped trusting, on energy that was never really yours to spend.</p>
       <a href="https://calendly.com/subhprotocol/15-mins" target="_blank" rel="noopener" class="btn btn-primary btn-large fade-up">Book Your Free 15-Min Call</a>
-      <p class="cta-scarcity fade-up">Maximum 8 clients at a time. Spots open when clients complete their protocol.</p>
+      <p class="cta-scarcity fade-up">I work with a limited number of clients at any time. Spots open when clients complete their protocol.</p>
 
       <!-- REPLACE YOURNUMBERHERE IN THE WHATSAPP LINK BELOW WITH YOUR NUMBER IN INTERNATIONAL FORMAT e.g. 919876543210 (no + sign, no spaces) -->
       <div class="contact-options fade-up">
@@ -2765,16 +2844,21 @@
   // ---------- CHARACTER SPLIT FOR HEADLINES ----------
   function splitChars(el){
     if (el.dataset.split === 'done') return;
-    var text = el.textContent;
+    var text = el.textContent.trim();
+    var words = text.split(/\s+/);
     var html = '';
     var charIndex = 0;
-    for (var i=0;i<text.length;i++){
-      var ch = text[i];
-      if (ch === ' '){
-        html += ' ';
-      } else {
+    for (var w = 0; w < words.length; w++) {
+      var wordText = words[w];
+      html += '<span style="white-space: nowrap;">';
+      for (var c = 0; c < wordText.length; c++) {
+        var ch = wordText[c];
         html += '<span class="stagger-char" style="transition-delay:' + (charIndex * 0.025) + 's">' + ch + '</span>';
         charIndex++;
+      }
+      html += '</span>';
+      if (w < words.length - 1) {
+        html += ' ';
       }
     }
     el.innerHTML = html;
@@ -2857,7 +2941,8 @@
         var cy = rect.height / 2;
         var rotateY = ((x - cx) / cx) * 2;
         var rotateX = -((y - cy) / cy) * 2;
-        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)';
+        var isFeaturedCompare = card.classList.contains('featured') && card.classList.contains('compare-card');
+        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-6px)' + (isFeaturedCompare ? ' scale(1.03)' : '');
       }
       function onLeave(){
         card.style.transform = '';
@@ -2921,6 +3006,7 @@
 
     var ticking = false;
     function update(){
+      if (isMobile()) return;
       ticking = false;
       var rect = wrap.getBoundingClientRect();
       var wrapHeight = wrap.offsetHeight;
@@ -2989,7 +3075,7 @@
     var counterData = [
       { target:60, format:function(n){ return n + '%'; },        finalText:'40–60%' },
       { target:6,  format:function(n){ return n + ' Days'; },    finalText:'6 Days' },
-      { target:3,  format:function(n){ return n + ' Months'; },  finalText:'3 Months' },
+      { target:12, format:function(n){ return n + ' Weeks'; },   finalText:'12 Weeks' },
       { target:9,  format:function(n){ return String(n); },      finalText:'9' }
     ];
 
