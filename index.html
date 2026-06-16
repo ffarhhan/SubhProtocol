@@ -242,13 +242,16 @@
     padding:120px 0 60px;
     position:relative;
     overflow:hidden;
+    background-image:linear-gradient(90deg,rgba(10,10,10,0.92) 0%,rgba(10,10,10,0.78) 45%,rgba(10,10,10,0.55) 100%),url(assets/hero-bg.jpg);
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
   }
   .hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse at 30% 50%,rgba(212,166,71,0.06) 0%,transparent 60%),
-               linear-gradient(180deg,rgba(10,10,10,0.1) 0%,transparent 30%,rgba(10,10,10,0.4) 100%);
+    background:linear-gradient(180deg,rgba(10,10,10,0.1) 0%,transparent 30%,rgba(10,10,10,0.4) 100%);
     pointer-events:none;
     z-index:1;
   }
@@ -256,7 +259,7 @@
     content:"";
     position:absolute;
     inset:0;
-    background:radial-gradient(ellipse at 80% 80%,rgba(212,166,71,0.04) 0%,transparent 50%);
+    background:transparent;
     pointer-events:none;
     z-index:1;
   }
@@ -837,8 +840,26 @@
     font-family:'Bebas Neue',sans-serif;
     font-size:clamp(2.2rem,3.5vw,3rem);
     color:#F5F0E8;
-    margin-bottom:14px;
+    margin-bottom:10px;
     letter-spacing:0.01em;
+  }
+  .service-price{
+    display:flex;
+    align-items:baseline;
+    gap:6px;
+    margin-bottom:14px;
+  }
+  .price-amount{
+    font-family:'Montserrat',sans-serif;
+    font-weight:800;
+    font-size:1.35rem;
+    color:#D4A647;
+    letter-spacing:0.01em;
+  }
+  .price-period{
+    font-family:'DM Sans',sans-serif;
+    font-size:0.82rem;
+    color:rgba(245,240,232,0.55);
   }
   .service-tagline{
     font-family:'Lora',serif;
@@ -1057,6 +1078,7 @@
     font-size:1.05rem;
     color:rgba(245,240,232,0.6);
     line-height:1.7;
+    text-shadow:0 2px 4px rgba(0,0,0,0.98),0 0 10px rgba(0,0,0,0.95),0 0 24px rgba(0,0,0,0.8);
   }
   .testimonial-grid{
     display:grid;
@@ -1066,9 +1088,9 @@
   }
   .testimonial-card{
     position:relative;
-    background:linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.015) 100%);
+    background:linear-gradient(135deg,rgba(20,20,20,0.66) 0%,rgba(20,20,20,0.5) 100%);
     backdrop-filter:blur(24px) saturate(1.4);
-    border:1px solid rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.12);
     border-left:3px solid #D4A647;
     border-radius:0 16px 16px 0;
     padding:36px 36px 36px 40px;
@@ -1623,6 +1645,15 @@
     color:rgba(245,240,232,0.35);
     letter-spacing:0.05em;
   }
+  .footer-disclaimer{
+    max-width:720px;
+    margin:24px auto 0;
+    font-family:'DM Sans',sans-serif;
+    font-size:11px;
+    line-height:1.7;
+    color:rgba(245,240,232,0.35);
+    text-align:center;
+  }
 
   /* ---------- ANIMATION UTILITIES ---------- */
   .fade-up{
@@ -1687,7 +1718,12 @@
 
   /* ---------- INACTION BLOCK ---------- */
   .inaction-block{
-    background:linear-gradient(135deg,rgba(212,166,71,0.06) 0%,rgba(10,10,10,0) 60%);
+    position:relative;
+    overflow:hidden;
+    background-image:linear-gradient(rgba(8,8,8,0.58),rgba(8,8,8,0.72)),url(assets/cost-of-waiting-bg.jpg);
+    background-size:cover;
+    background-position:center right;
+    background-repeat:no-repeat;
     border-top:1px solid rgba(212,166,71,0.15);
     border-bottom:1px solid rgba(212,166,71,0.15);
     padding:60px 0;
@@ -1960,14 +1996,25 @@
   .sticky-cta-note{ display:block; text-align:center; margin-top:7px; font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:0.12em; text-transform:uppercase; color:rgba(245,240,232,0.5); }
 
   /* ---------- CORNER LOGO ---------- */
-  .brand-corner{ position:fixed; top:16px; left:22px; z-index:950; display:block; transition:transform 0.3s ease; }
-  .brand-corner img{ height:58px; width:auto; display:block; filter:drop-shadow(0 4px 14px rgba(0,0,0,0.55)); }
-  .brand-corner:hover{ transform:translateY(-2px); }
+  .brand-corner{ position:fixed; top:24px; left:44px; z-index:950; display:flex; flex-direction:column; align-items:flex-start; line-height:1; text-decoration:none; transition:opacity 0.3s ease; text-shadow:0 0 2px #0A0A0A,0 0 2px #0A0A0A,0 0 3px #0A0A0A,0 0 5px #0A0A0A,0 0 5px #0A0A0A,0 0 8px #0A0A0A,0 0 10px #0A0A0A; }
+  .brand-corner:hover{ opacity:0.85; }
   .brand-corner:focus-visible{ outline:2px solid #D4A647; outline-offset:4px; border-radius:8px; }
+  .bc-the{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:11px; letter-spacing:0.28em; text-transform:uppercase; color:#F5F0E8; }
+  .bc-subh{ font-family:'Dancing Script',cursive; font-weight:700; font-size:40px; color:#D4A647; line-height:0.82; margin-top:-2px; }
+  .bc-protocol{ font-family:'Montserrat',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:#F5F0E8; margin-top:-2px; margin-left:52px; }
 
   /* split-paragraph spacing */
   .diff-sub{ margin-bottom:20px; }
   .inaction-copy{ margin-bottom:18px; }
+
+  /* ---------- TESTIMONIALS BACKGROUND ---------- */
+  #testimonials.alt{
+    position:relative;
+    background-image:linear-gradient(rgba(8,8,8,0.62),rgba(8,8,8,0.74)),url(assets/testimonials-bg.jpg);
+    background-size:cover;
+    background-position:left center;
+    background-repeat:no-repeat;
+  }
 
   @media (max-width:768px){
     section{padding:48px 0;}
@@ -1975,10 +2022,11 @@
     .snapshot-grid{ grid-template-columns:1fr; }
     .sticky-cta{ display:block; }
     .nav{top:14px;padding:8px 10px;min-width:auto;gap:4px;left:auto;right:14px;transform:none;}
-    .brand-corner{ top:14px; left:16px; }
-    .brand-corner img{ height:40px; }
+    .brand-corner{ top:18px; left:24px; }
+    .bc-subh{ font-size:30px; }
+    .bc-protocol{ margin-left:38px; }
     .nav-cta{padding:8px 14px !important;font-size:11px !important;}
-    .hero{padding:92px 0 44px;}
+    .hero{padding:92px 0 44px;background-image:linear-gradient(rgba(10,10,10,0.90),rgba(10,10,10,0.90)),url(assets/hero-bg.jpg);background-position:center;background-size:cover;}
     .hero-headline{font-size:clamp(2.6rem,11vw,4.5rem);}
     .services-grid{grid-template-columns:1fr;}
     .testimonial-grid{grid-template-columns:1fr;}
@@ -2133,7 +2181,9 @@
 
 <!-- Corner logo -->
 <a href="#hero" class="brand-corner" aria-label="The Subh Protocol — home">
-  <img src="assets/subh-logo.png" alt="The Subh Protocol" />
+  <span class="bc-the">The</span>
+  <span class="bc-subh">Subh</span>
+  <span class="bc-protocol">Protocol</span>
 </a>
 
 <!-- NAVIGATION -->
@@ -2282,7 +2332,7 @@
         <div class="cred-name fade-up-strong">SUBHAM</div>
         <span class="cred-name-sub fade-up">Practitioner · Coach · Martial Artist</span>
         <img src="assets/subham-portrait.jpg" alt="Subham, founder of The Subh Protocol" class="about-portrait fade-up" loading="lazy" />
-        <p class="cred-footer fade-up">9 years full-contact Karate · Kali &amp; Hubud · 10 years Calisthenics · Functional Nutrition &amp; Biohacking practice</p>
+        <p class="cred-footer fade-up">9 years full-contact Karate · Kali &amp; Hubud · 10 years Calisthenics · Certified in Functional Nutrition (iThrive) · Certified in Biohacking (Biohacking India)</p>
       </div>
       <!-- RIGHT: scrollable narrative -->
       <div class="letter-inner">
@@ -2291,6 +2341,7 @@
         <p class="letter-para fade-up"><span class="opening">My mother is the reason I stepped out of mainstream fitness and into nutrition and root-cause health.</span> Watching conventional approaches repeatedly fail someone I loved changed how I see the body — not as a machine to push, but as a system trying to communicate.</p>
         <p class="letter-para fade-up"><span class="opening">That frustration became obsession.</span> It became years of parallel study and lived practice — nutrition, biohacking, advanced diagnostics, and nearly a decade of full-contact martial arts. No single discipline revealed the answer. It was the collision of all of them that taught me what no textbook could: how the body actually moves, recovers, coordinates, and sustains itself when every system is addressed at once.</p>
         <p class="cred-contrast fade-up">Most practitioners understand the body either from the outside — through training — or through a clinical lens. I work both at once, which is exactly what real change requires. Very few practitioners anywhere work at the intersection of clinical biomarker analysis, nutrition, and martial arts-based movement therapy simultaneously.</p>
+        <p class="letter-para fade-up">To be clear about how I work: I am a certified practitioner, not a doctor. I do not diagnose, treat, or replace medical care — I analyse your biomarkers and build nutrition, training, and lifestyle protocols around them, and I flag anything that needs a physician. You stay in charge of your medical decisions; I make the data usable.</p>
         <p class="cred-contrast fade-up">Every recommendation in this protocol — diet, supplements, lifestyle adjustments, biohacking methods — is derived from peer-reviewed scientific research. Nothing here is based on personal preference, market trends, or what is currently popular in the fitness industry.</p>
         <p class="letter-para fade-up">This is not a niche offering. It is a gap in the market that took nearly a decade of parallel study and practice to fill. The professionals I work with are not lazy or undisciplined — they are intelligent, capable people running systems never designed for the demands of their life. They tried the standard answers. The standard answers did not work. I do not take every client who enquires. The 15-minute call is itself a filter — if I cannot genuinely help you, I will say that directly.</p>
         <p class="letter-para final fade-up">If any of this page has felt like someone finally understands your exact situation — that is not an accident. This protocol exists because I needed to build something I could not find anywhere else.</p>
@@ -2550,8 +2601,9 @@
           <div class="service-duration-badge featured-dur">12 Weeks</div>
         </div>
         <h3 class="service-title">Root Cause Audit</h3>
+        <div class="service-price"><span class="price-amount">₹11,999</span><span class="price-period"> / 3 months</span></div>
         <p class="service-tagline">For the professional who needs to understand what is actually driving their symptoms — before committing to anything else.</p>
-        <div class="service-highlight-stat">Blood work-guided intervention alone typically reduces symptoms by <strong>40–60%.</strong> Every recommendation is backed by peer-reviewed scientific literature.</div>
+        <div class="service-highlight-stat">In practice, blood work-guided intervention alone has reduced clients' symptoms by roughly <strong>40–60%</strong> — confirmed by the week-12 retest. Every recommendation is traceable to the research behind it.</div>
         <div class="service-divider"></div>
         <div class="service-features">
           <div class="service-feature">
@@ -2609,13 +2661,14 @@
           <div class="service-duration-badge">4 Weeks · Renewable</div>
         </div>
         <h3 class="service-title">The Movement Protocol</h3>
+        <div class="service-price"><span class="price-amount">₹15,999 – ₹19,999</span><span class="price-period"> / month · scaled to 3–6 days</span></div>
         <p class="service-tagline">For the professional who wants every component of physical fitness rebuilt — without the clinical commitment. The training methodology, standalone.</p>
         <div class="service-highlight-stat">The only movement protocol covering strength, aerobic capacity, coordination, agility, mental sharpness, and self-defence awareness — in one structured 4-week system.</div>
         <div class="service-divider"></div>
         <div class="service-features">
           <div class="service-feature">
             <span class="sf-check">✓</span>
-            <span>Full 6-day training cycle — every component of fitness addressed</span>
+            <span>Training cycle scaled to your schedule — 3 to 6 days, every component addressed</span>
           </div>
           <div class="service-feature">
             <span class="sf-check">✓</span>
@@ -2632,6 +2685,10 @@
           <div class="service-feature">
             <span class="sf-check">✓</span>
             <span>Flexibility, mobility, breathwork &amp; active recovery</span>
+          </div>
+          <div class="service-feature">
+            <span class="sf-check">✓</span>
+            <span>Basic nutrition guidance for body recomposition — general principles to support fat loss and muscle gain, with no clinical biomarker analysis or supplement protocols</span>
           </div>
           <div class="service-feature">
             <span class="sf-check">✓</span>
@@ -2658,7 +2715,7 @@
 </section>
 
 <!-- SECTION 6 — SOCIAL PROOF -->
-<section class="alt">
+<section class="alt" id="testimonials">
   <div class="container">
     <div class="testimonials-intro">
       <span class="eyebrow fade-up">What Changes</span>
@@ -2706,7 +2763,7 @@
     <div class="stats-strip fade-up">
       <div class="stat-cell">
         <div class="stat-number">40–60%</div>
-        <div class="stat-label">Average symptom reduction with blood work intervention</div>
+        <div class="stat-label">Typical symptom reduction clients report, confirmed by 12-week retest</div>
       </div>
       <div class="stat-cell">
         <div class="stat-number">6 Days</div>
@@ -2745,7 +2802,7 @@
         </div>
         <div class="filter-item">
           <span class="filter-icon">+</span>
-          <span>You can commit 6 days a week to the protocol.</span>
+          <span>You can commit to a consistent weekly schedule — 3 to 6 days, built around your life.</span>
         </div>
         <div class="filter-item">
           <span class="filter-icon">+</span>
@@ -2853,7 +2910,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Every single recommendation in the protocol — the nutrition approach, the supplement choices, the lifestyle adjustments, the biohacking methods, the recovery strategies — is derived from peer-reviewed scientific literature. Nothing is based on personal preference, nothing is trend-driven, and nothing is included because it is popular right now. If a recommendation cannot be justified by research specific to your biomarker findings, it does not make it into your protocol. This is not a generic wellness plan. It is a clinically reasoned document built around your specific biological data.</div>
+          <div class="faq-answer-inner">Every single recommendation in the protocol — the nutrition approach, the supplement choices, the lifestyle adjustments, the biohacking methods, the recovery strategies — is derived from peer-reviewed scientific literature. Nothing is based on personal preference, nothing is trend-driven, and nothing is included because it is popular right now. If a recommendation cannot be justified by research specific to your biomarker findings, it does not make it into your protocol. This is not a generic wellness plan. It is a clinically reasoned document built around your specific biological data. For example: persistent afternoon crashes alongside heavy coffee intake and low ferritin on a panel point to caffeine blunting iron absorption — so the fix is iron and timing strategy, not another stimulant. That chain — biomarker to mechanism to intervention — is how every recommendation is built.</div>
         </div>
       </div>
 
@@ -2864,6 +2921,16 @@
         </button>
         <div class="faq-answer">
           <div class="faq-answer-inner">The specific comprehensive test I recommend must be done. Existing partial reports can be reviewed as context but cannot replace the required panel.</div>
+        </div>
+      </div>
+
+      <div class="faq-item fade-up">
+        <button class="faq-question" aria-expanded="false">
+          <span>How does the blood test work — and is this available outside India?</span>
+          <span class="faq-icon" aria-hidden="true"></span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Inside India: you get the exact panel I specify done at any accredited lab or hospital — no prescription needed — and share the results. Outside India: many countries require a physician's order for lab testing, so you obtain the same specified panel through your own doctor or local provider and share the results with me. Either way, I tell you precisely which biomarkers are required, and your protocol is built from your results. I do not order tests or prescribe — I analyse the data you provide and build the protocol around it.</div>
         </div>
       </div>
 
@@ -2943,7 +3010,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Blood work-guided interventions typically show 40–60% symptom reduction within the first 12 weeks. Physical and energy changes begin in weeks 2–4 for most clients. The compulsory retest at 12 weeks shows exactly what has shifted.</div>
+          <div class="faq-answer-inner">Blood work-guided interventions typically bring noticeable symptom reduction within the first 12 weeks — clients often see around 40–60%, confirmed by the retest. Physical and energy changes begin in weeks 2–4 for most clients. The compulsory retest at 12 weeks shows exactly what has shifted.</div>
         </div>
       </div>
 
@@ -2953,7 +3020,7 @@
           <span class="faq-icon" aria-hidden="true"></span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Discussed directly on the call.</div>
+          <div class="faq-answer-inner">Root Cause Audit: ₹11,999 for the full 3 months (fixed). Movement Protocol: ₹15,999 to ₹19,999 per month, depending on whether you train 3, 4, 5 or 6 days a week — the exact figure is confirmed on the call.</div>
         </div>
       </div>
     </div>
@@ -3025,6 +3092,7 @@
       </div>
     </div>
     <div class="footer-bottom">© The Subh Protocol. All rights reserved.</div>
+    <p class="footer-disclaimer">The Subh Protocol provides health, nutrition, and fitness coaching for educational purposes. It is not medical advice and is not a substitute for diagnosis or treatment by a qualified physician. Always consult your doctor before making changes — especially regarding medications or existing conditions. Any biomarker data you share is kept private and used only to build your protocol.</p>
   </div>
 </footer>
 
